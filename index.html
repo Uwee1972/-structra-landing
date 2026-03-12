@@ -1,80 +1,150 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
 <head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Structra | Build Smarter</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-body{
-font-family: Arial;
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter, sans-serif;
+}
+
+body{
 background:#0b1f3b;
 color:white;
-text-align:center;
 }
 
 header{
-padding:40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px 60px;
 }
 
 .logo{
-font-size:32px;
-font-weight:bold;
+font-size:26px;
+font-weight:700;
 }
 
-.sub{
-font-size:14px;
-opacity:0.7;
+.logo small{
+display:block;
+font-size:12px;
+opacity:.6;
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:white;
+opacity:.8;
 }
 
 .hero{
-padding:80px 20px;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+text-align:center;
+padding:120px 20px;
 }
 
 .hero h1{
-font-size:48px;
+font-size:56px;
 margin-bottom:20px;
 }
 
-.buttons a{
-padding:14px 28px;
-margin:10px;
-display:inline-block;
-border-radius:6px;
-text-decoration:none;
-font-weight:bold;
+.hero p{
+opacity:.8;
+margin-bottom:40px;
+font-size:18px;
 }
 
-.btn1{
+.btn{
+padding:14px 28px;
+border-radius:8px;
+margin:10px;
+text-decoration:none;
+font-weight:600;
+display:inline-block;
+}
+
+.btn-orange{
 background:#f97316;
 color:white;
 }
 
-.btn2{
+.btn-blue{
 background:#2563eb;
 color:white;
 }
 
-.tools{
-padding:60px 20px;
-background:#09162a;
+.section{
+padding:90px 40px;
+text-align:center;
+}
+
+.section h2{
+margin-bottom:40px;
+font-size:32px;
+}
+
+.cards{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px;
 }
 
 .card{
 background:#13274b;
-padding:25px;
-margin:15px;
-border-radius:10px;
-display:inline-block;
+padding:30px;
+border-radius:12px;
 width:260px;
+transition:.2s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+.card p{
+opacity:.7;
+font-size:14px;
+margin-bottom:15px;
+}
+
+.card button{
+background:#2563eb;
+border:none;
+color:white;
+padding:10px 18px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.platform{
+background:#09162a;
 }
 
 footer{
 padding:40px;
+text-align:center;
+opacity:.6;
 font-size:14px;
-opacity:0.7;
 }
 
 </style>
@@ -85,8 +155,16 @@ opacity:0.7;
 
 <header>
 
-<div class="logo">STRUCTRA</div>
-<div class="sub">A platform by Structra Technologies</div>
+<div class="logo">
+STRUCTRA
+<small>A platform by Structra Technologies</small>
+</div>
+
+<nav>
+<a href="#">Platform</a>
+<a href="#">Products</a>
+<a href="#">About</a>
+</nav>
 
 </header>
 
@@ -96,33 +174,71 @@ opacity:0.7;
 
 <p>AI-powered tools for construction, inspections, and property insights.</p>
 
-<div class="buttons">
-
-<a class="btn1">Explore Platform</a>
-<a class="btn2">View Products</a>
-
+<div>
+<a class="btn btn-orange">Explore Platform</a>
+<a class="btn btn-blue">View Products</a>
 </div>
 
 </section>
 
-<section class="tools">
+<section class="section">
 
 <h2>Choose Your Structra Tool</h2>
 
+<div class="cards">
+
 <div class="card">
 <h3>Home Buyers</h3>
-<p>Understand property condition before buying.</p>
+<p>AI insights for property buyers.</p>
+<button>Launch Tool</button>
 </div>
 
 <div class="card">
 <h3>Structra Inspect</h3>
 <p>Professional inspection software.</p>
+<button>Launch Tool</button>
 </div>
 
 <div class="card">
 <h3>Structra Estimate</h3>
-<p>AI construction estimating.</p>
+<p>AI construction estimating platform.</p>
+<button>Launch Tool</button>
 </div>
+
+<div class="card">
+<h3>Structra Projects</h3>
+<p>Construction project management.</p>
+<button>Coming Soon</button>
+</div>
+
+<div class="card">
+<h3>Structra Trades</h3>
+<p>Subcontractor bidding marketplace.</p>
+<button>Coming Soon</button>
+</div>
+
+<div class="card">
+<h3>Structra Compliance</h3>
+<p>Building compliance and documentation.</p>
+<button>Coming Soon</button>
+</div>
+
+</div>
+
+</section>
+
+<section class="section platform">
+
+<h2>The AI Platform for Construction</h2>
+
+<p>
+Structra connects property buyers, inspectors, builders and subcontractors
+in a single AI-powered ecosystem.
+</p>
+
+<br>
+
+<a class="btn btn-blue">Try Structra Inspect</a> <a class="btn btn-orange">Get Estimate</a>
 
 </section>
 
