@@ -1,25 +1,18 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html>
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Structra | Build Smarter</title>
+<title>Structra</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Inter, sans-serif;
-}
-
 body{
+margin:0;
+font-family:Inter;
 background:#0b1f3b;
 color:white;
 }
@@ -28,130 +21,119 @@ header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:25px 80px;
-max-width:1400px;
-margin:auto;
-}
-.logo{
-display:flex;
-align-items:center;
-gap:14px;
-font-size:20px;
-font-weight:700;
+padding:30px 80px;
 }
 
 .logo img{
 height:55px;
 }
-.logo small{
-display:block;
-font-size:12px;
-opacity:.6;
-}
 
 nav a{
-margin-left:25px;
-text-decoration:none;
+margin-left:30px;
 color:white;
+text-decoration:none;
 opacity:.8;
+font-weight:500;
 }
 
 .hero{
 display:flex;
 align-items:center;
-justify-content:center;
-flex-direction:column;
-text-align:center;
-padding:120px 20px;
+justify-content:space-between;
+padding:120px 80px;
+}
+
+.hero-text{
+max-width:520px;
 }
 
 .hero h1{
-font-size:56px;
+font-size:54px;
 margin-bottom:20px;
 }
 
 .hero p{
-opacity:.8;
-margin-bottom:40px;
+opacity:.7;
 font-size:18px;
+margin-bottom:35px;
 }
 
 .btn{
-padding:14px 28px;
+padding:14px 26px;
 border-radius:8px;
-margin:10px;
 text-decoration:none;
+margin-right:12px;
 font-weight:600;
-display:inline-block;
 }
 
-.btn-orange{
-background:#f97316;
-color:white;
-}
-
-.btn-blue{
+.primary{
 background:#2563eb;
-color:white;
+}
+
+.secondary{
+background:#1e293b;
+}
+
+.hero-image img{
+width:380px;
+border-radius:20px;
+box-shadow:0 20px 60px rgba(0,0,0,.4);
 }
 
 .section{
-padding:90px 40px;
-text-align:center;
+padding:100px 80px;
 }
 
 .section h2{
-margin-bottom:40px;
-font-size:32px;
+font-size:34px;
+margin-bottom:20px;
 }
 
-.cards{
+.features{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+margin-top:50px;
+}
+
+.feature{
 display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:25px;
+gap:14px;
+align-items:flex-start;
 }
 
-.card{
-background:#13274b;
-padding:30px;
-border-radius:12px;
-width:260px;
-transition:.2s;
+.feature span{
+font-size:20px;
 }
 
-.card:hover{
-transform:translateY(-5px);
+.report{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-top:80px;
 }
 
-.card h3{
-margin-bottom:10px;
+.report img{
+width:450px;
+border-radius:18px;
+box-shadow:0 20px 60px rgba(0,0,0,.4);
 }
 
-.card p{
-opacity:.7;
-font-size:14px;
-margin-bottom:15px;
-}
-
-.card button{
-background:#2563eb;
-border:none;
-color:white;
-padding:10px 18px;
-border-radius:6px;
-cursor:pointer;
-}
-
-.platform{
+.cta{
+text-align:center;
+padding:120px 80px;
 background:#09162a;
+}
+
+.cta h2{
+font-size:40px;
+margin-bottom:20px;
 }
 
 footer{
 padding:40px;
 text-align:center;
 opacity:.6;
-font-size:14px;
 }
 
 </style>
@@ -160,105 +142,131 @@ font-size:14px;
 
 <body>
 
-<header><p style="text-align:center;opacity:.6;margin-top:-10px;">
-A platform by Structra Technologies
-</p> 
+<header>
 
 <div class="logo">
 
 <img src="structra-logo.png">
 
-<strong>STRUCTRA</strong>
-
 </div>
 
 <nav>
-<a href="#">Platform</a>
-<a href="#">Products</a>
-<a href="#">About</a>
+
+<a href="#">Features</a> <a href="#">How it Works</a> <a href="#">Pricing</a>
+
 </nav>
 
 </header>
 
 <section class="hero">
 
-<h1>Build Smarter with Structra</h1>
+<div class="hero-text">
 
-<p>AI-powered tools for construction, inspections, and property insights.</p>
+<h1>Professional property inspections — without the paperwork.</h1>
 
-<div>
-<a class="btn btn-orange">Explore Platform</a>
-<a class="btn btn-blue">View Products</a>
+<p>
+Capture defects, generate polished reports,
+and turn inspections into actionable scopes —
+all from your phone.
+</p>
+
+<a class="btn primary">Join Early Access</a>
+
+<a class="btn secondary">See how it works</a>
+
+</div>
+
+<div class="hero-image">
+
+<img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc">
+
 </div>
 
 </section>
 
 <section class="section">
 
-<h2>Choose Your Structra Tool</h2>
+<h2>Inspections shouldn’t take longer than the site visit</h2>
 
-<div class="cards">
+<p style="opacity:.7">
+Structra captures everything onsite and builds the report automatically.
+</p>
 
-<div class="card">
-<h3>Home Buyers</h3>
-<p>AI insights for property buyers.</p>
-<button>Launch Tool</button>
+<div class="features">
+
+<div class="feature">
+<span>✔</span>
+<div>
+<strong>Messy photos</strong>
+<p style="opacity:.6">Capture structured inspection evidence</p>
+</div>
 </div>
 
-<div class="card">
-<h3>Structra Inspect</h3>
-<p>Professional inspection software.</p>
-<button>Launch Tool</button>
+<div class="feature">
+<span>✔</span>
+<div>
+<strong>Forgotten defects</strong>
+<p style="opacity:.6">AI highlights potential issues</p>
+</div>
 </div>
 
-<div class="card">
-<h3>Structra Estimate</h3>
-<p>AI construction estimating platform.</p>
-<button>Launch Tool</button>
+<div class="feature">
+<span>✔</span>
+<div>
+<strong>Instant reports</strong>
+<p style="opacity:.6">Generate reports instantly</p>
+</div>
 </div>
 
-<div class="card">
-<h3>Structra Projects</h3>
-<p>Construction project management.</p>
-<button>Coming Soon</button>
+<div class="feature">
+<span>✔</span>
+<div>
+<strong>Turn into quotes</strong>
+<p style="opacity:.6">Convert findings into scopes</p>
+</div>
 </div>
 
-<div class="card">
-<h3>Structra Trades</h3>
-<p>Subcontractor bidding marketplace.</p>
-<button>Coming Soon</button>
 </div>
 
-<div class="card">
-<h3>Structra Compliance</h3>
-<p>Building compliance and documentation.</p>
-<button>Coming Soon</button>
+<div class="report">
+
+<div>
+
+<h2>See your inspections — polished and client ready</h2>
+
+<p style="opacity:.7">
+Structra builds professional reports automatically so inspectors
+can focus on the property, not paperwork.
+</p>
+
 </div>
+
+<img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67">
 
 </div>
 
 </section>
 
-<section class="section platform">
+<section class="cta">
 
-<h2>The AI Platform for Construction</h2>
+<h2>Ready to get started?</h2>
 
-<p>
-Structra connects property buyers, inspectors, builders and subcontractors
-in a single AI-powered ecosystem.
-</p>
+<p style="opacity:.7">Start building smart with Structra today.</p>
 
 <br>
 
-<a class="btn btn-blue">Try Structra Inspect</a> <a class="btn btn-orange">Get Estimate</a>
+<a class="btn primary">Get Started</a>
+
+<a class="btn secondary">View Demo</a>
 
 </section>
 
 <footer>
 
-© 2026 Structra Technologies
+© Structra Technologies
 
 </footer>
 
 </body>
+
 </html>
