@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -35,7 +36,7 @@ linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
 
 background-size:60px 60px;
 
-animation:gridMove 30s linear infinite;
+animation:gridMove 35s linear infinite;
 
 z-index:-2;
 }
@@ -45,51 +46,33 @@ z-index:-2;
 100%{transform:translateY(60px)}
 }
 
-/* AI NETWORK */
-
-.ai-network{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-z-index:-1;
-}
-
-.node{
-position:absolute;
-width:6px;
-height:6px;
-background:#3b82f6;
-border-radius:50%;
-opacity:.8;
-}
-
 /* HEADER */
 
 header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:28px 40px;
-max-width:1200px;
+
+padding:20px 40px;
+
+max-width:1300px;
 margin:auto;
 
 position:sticky;
 top:0;
 
-background:rgba(6,20,37,.92);
+background:rgba(6,20,37,.95);
 backdrop-filter:blur(10px);
 
 border-bottom:1px solid rgba(255,255,255,.05);
 z-index:100;
 }
 
-/* BIGGER LOGO */
+/* BIG LOGO */
 
 .logo img{
-height:110px;
+height:180px;
+width:auto;
 }
 
 /* NAV */
@@ -113,10 +96,13 @@ opacity:1;
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:120px 40px;
-max-width:1200px;
+
+padding:100px 40px;
+
+max-width:1300px;
 margin:auto;
-gap:80px;
+
+gap:100px;
 }
 
 .hero-text{
@@ -127,16 +113,18 @@ max-width:580px;
 display:inline-block;
 background:rgba(59,130,246,.15);
 color:#60a5fa;
-padding:10px 18px;
+
+padding:10px 20px;
 border-radius:20px;
+
 font-size:15px;
-margin-bottom:20px;
+margin-bottom:22px;
 }
 
 .hero h1{
 font-size:70px;
 line-height:1.05;
-margin-bottom:20px;
+margin-bottom:24px;
 }
 
 .hero p{
@@ -148,19 +136,23 @@ margin-bottom:40px;
 /* BUTTONS */
 
 .btn{
-padding:20px 40px;
+padding:20px 42px;
 border-radius:12px;
-text-decoration:none;
+
 margin-right:16px;
+
 font-weight:600;
-display:inline-block;
 font-size:19px;
+
+display:inline-block;
 cursor:pointer;
+
+text-decoration:none;
 }
 
 .primary{
 background:linear-gradient(135deg,#3b82f6,#2563eb);
-box-shadow:0 10px 40px rgba(37,99,235,.4);
+box-shadow:0 12px 40px rgba(37,99,235,.45);
 }
 
 .secondary{
@@ -168,126 +160,240 @@ background:#1e293b;
 border:1px solid rgba(255,255,255,.15);
 }
 
-/* HERO IMAGE */
+/* BLUEPRINT PANELS */
 
 .hero-image{
 position:relative;
+width:650px;
+height:450px;
 }
 
-.hero-image img{
-width:600px;
-border-radius:24px;
-box-shadow:0 60px 140px rgba(0,0,0,.8);
-}
+/* MAIN PLAN */
 
-/* BLUE GLOW */
+.plan-main{
 
-.hero-image::before{
-content:'';
 position:absolute;
-width:700px;
-height:700px;
-background:radial-gradient(circle, rgba(59,130,246,.35), transparent);
-filter:blur(120px);
-z-index:-1;
+
+top:0;
+right:0;
+
+width:620px;
+
+background:white;
+padding:20px;
+
+border-radius:16px;
+
+box-shadow:0 60px 140px rgba(0,0,0,.7);
 }
 
-/* SECTIONS */
+.plan-main img{
+width:100%;
+}
+
+/* SECOND PLAN */
+
+.plan-secondary{
+
+position:absolute;
+
+bottom:-40px;
+left:-60px;
+
+width:420px;
+
+background:white;
+padding:18px;
+
+border-radius:14px;
+
+opacity:.9;
+
+transform:rotate(-6deg);
+
+box-shadow:0 40px 90px rgba(0,0,0,.6);
+}
+
+.plan-secondary img{
+width:100%;
+}
+
+/* AI SCAN LINE */
+
+.scan-line{
+
+position:absolute;
+top:0;
+left:0;
+
+width:100%;
+height:4px;
+
+background:#3b82f6;
+
+animation:scan 5s linear infinite;
+
+}
+
+@keyframes scan{
+
+0%{top:0}
+100%{top:100%}
+
+}
+
+/* MARKERS */
+
+.marker{
+
+position:absolute;
+
+width:12px;
+height:12px;
+
+background:#3b82f6;
+
+border-radius:50%;
+
+box-shadow:0 0 12px #3b82f6;
+
+}
+
+.m1{top:120px;left:160px;}
+.m2{top:240px;left:320px;}
+.m3{top:170px;left:450px;}
+
+/* SECTION */
 
 .section{
+
 padding:120px 40px;
+
 text-align:center;
+
 max-width:1100px;
 margin:auto;
+
 border-top:1px solid rgba(255,255,255,.05);
+
 }
 
 .section h2{
+
 font-size:46px;
 margin-bottom:20px;
+
 }
 
 .section p{
+
 opacity:.75;
 font-size:20px;
+
 }
 
 /* FEATURES */
 
 .features{
+
 display:grid;
+
 grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
 gap:40px;
+
 margin-top:80px;
+
 text-align:left;
+
 }
 
 /* CARDS */
 
 .cards{
+
 display:grid;
+
 grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
 gap:30px;
+
 margin-top:70px;
+
 }
 
 .card{
+
 background:rgba(19,39,75,.6);
+
 padding:38px;
+
 border-radius:18px;
+
 border:1px solid rgba(255,255,255,.06);
+
 transition:.3s;
+
 }
 
 .card:hover{
+
 transform:translateY(-10px);
+
 border-color:#3b82f6;
+
 box-shadow:0 30px 70px rgba(0,0,0,.6);
+
 }
 
 .icon{
+
 font-size:34px;
 margin-bottom:14px;
-}
 
-/* DASHBOARD */
-
-.dashboard{
-margin-top:100px;
-}
-
-.dashboard img{
-width:100%;
-border-radius:22px;
-box-shadow:0 60px 150px rgba(0,0,0,.7);
 }
 
 /* CTA */
 
 .cta{
+
 text-align:center;
+
 padding:160px 40px;
+
 background:radial-gradient(circle at top,#123a74 0%,#071629 40%,#020a14 100%);
+
 border-top:1px solid rgba(255,255,255,.05);
+
 }
 
 .cta h2{
+
 font-size:50px;
 margin-bottom:20px;
+
 }
 
 .cta p{
+
 opacity:.75;
+
 font-size:22px;
+
 margin-bottom:40px;
+
 }
 
 /* FOOTER */
 
 footer{
+
 padding:60px;
+
 text-align:center;
+
 opacity:.6;
+
 }
 
 </style>
@@ -295,8 +401,6 @@ opacity:.6;
 </head>
 
 <body>
-
-<div class="ai-network" id="network"></div>
 
 <header>
 
@@ -313,7 +417,6 @@ opacity:.6;
 
 </header>
 
-
 <section class="hero">
 
 <div class="hero-text">
@@ -327,19 +430,33 @@ AI powered inspections, estimating and project tools
 built for builders, inspectors and property buyers.
 </p>
 
-<a class="btn primary">Explore Platform</a>
-<a class="btn secondary">See How It Works</a>
+<a class="btn primary">Explore Platform</a> <a class="btn secondary">See How It Works</a>
 
 </div>
 
 <div class="hero-image">
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Architectural_blueprint_example.jpg">
+<div class="plan-main">
+
+<div class="scan-line"></div>
+
+<div class="marker m1"></div>
+<div class="marker m2"></div>
+<div class="marker m3"></div>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/86/House_floor_plan.svg">
+
+</div>
+
+<div class="plan-secondary">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/House_plan.svg">
+
+</div>
 
 </div>
 
 </section>
-
 
 <section class="section">
 
@@ -375,7 +492,6 @@ Structra connects inspections, estimates and projects in one AI powered platform
 
 </section>
 
-
 <section class="section">
 
 <h2>Structra Products</h2>
@@ -408,14 +524,7 @@ Structra connects inspections, estimates and projects in one AI powered platform
 
 </div>
 
-<div class="dashboard">
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Blueprint_of_floor_plan.png">
-
-</div>
-
 </section>
-
 
 <section class="cta">
 
@@ -429,33 +538,11 @@ Start using Structra to power inspections, estimates and construction workflows.
 
 </section>
 
-
 <footer>
 
 © Structra Technologies
 
 </footer>
-
-
-<script>
-
-/* AI NETWORK */
-
-const container = document.getElementById("network");
-
-for(let i=0;i<25;i++){
-
-let node=document.createElement("div");
-node.className="node";
-
-node.style.left=Math.random()*100+"%";
-node.style.top=Math.random()*100+"%";
-
-container.appendChild(node);
-
-}
-
-</script>
 
 </body>
 </html>
