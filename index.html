@@ -1,377 +1,577 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Structra – Build Smarter</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-<title>Structra</title>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      color: #1a1a2e;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 60px;
+      background: #fff;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-<style>
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-/* GLOBAL */
+    .logo svg {
+      width: 36px;
+      height: 36px;
+    }
 
-body{
-margin:0;
-font-family:Inter;
-color:white;
-background:#061425;
-overflow-x:hidden;
-}
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
 
-/* GRID BACKGROUND */
+    .logo-text span:first-child {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
 
-body::before{
-content:'';
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background-image:
-linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-background-size:60px 60px;
-z-index:-1;
-}
+    .logo-text span:last-child {
+      font-size: 10px;
+      color: #888;
+    }
 
-/* HEADER */
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
 
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 40px;
-max-width:1300px;
-margin:auto;
-flex-wrap:wrap;
-}
+    .nav-links a {
+      text-decoration: none;
+      color: #444;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
 
-/* BIG LOGO */
+    .nav-links a:hover { color: #2563eb; }
 
-.logo img{
-height:120px;
-}
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-/* NAV */
+    .btn-login {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
 
-nav{
-display:flex;
-flex-wrap:wrap;
-}
+    .btn-login:hover { background: #1d4ed8; }
 
-nav a{
-margin-left:28px;
-font-size:18px;
-color:white;
-text-decoration:none;
-opacity:.9;
-font-weight:600;
-}
+    /* HERO */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 60px 60px;
+      background: linear-gradient(135deg, #e8f0fe 0%, #f0f4f8 60%);
+      min-height: 520px;
+      gap: 40px;
+    }
 
-/* HERO */
+    .hero-content {
+      max-width: 480px;
+    }
 
-.hero{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:80px;
-padding:100px 40px;
-max-width:1300px;
-margin:auto;
-flex-wrap:wrap;
-}
+    .hero-content h1 {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.15;
+      color: #1a1a2e;
+      margin-bottom: 18px;
+    }
 
-.hero-text{
-max-width:560px;
-}
+    .hero-content h1 span { color: #2563eb; }
 
-.tag{
-display:inline-block;
-background:rgba(59,130,246,.15);
-color:#60a5fa;
-padding:10px 18px;
-border-radius:20px;
-font-size:14px;
-margin-bottom:20px;
-}
+    .hero-content p {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
 
-.hero h1{
-font-size:64px;
-margin-bottom:20px;
-line-height:1.05;
-}
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
 
-.hero p{
-font-size:22px;
-opacity:.8;
-margin-bottom:36px;
-}
+    .btn-primary {
+      background: #2563eb;
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
 
-/* BUTTONS */
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
 
-.btn{
-display:inline-block;
-padding:18px 34px;
-border-radius:12px;
-font-size:18px;
-font-weight:600;
-margin-right:16px;
-text-decoration:none;
-}
+    .btn-secondary {
+      background: #fff;
+      color: #2563eb;
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      border: 2px solid #2563eb;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
 
-.primary{
-background:linear-gradient(135deg,#3b82f6,#2563eb);
-color:white;
-box-shadow:0 10px 30px rgba(37,99,235,.4);
-}
+    .btn-secondary:hover {
+      background: #eff6ff;
+      transform: translateY(-1px);
+    }
 
-.secondary{
-background:#1e293b;
-border:1px solid rgba(255,255,255,.2);
-color:white;
-}
+    /* PLANS CARD */
+    .hero-visual {
+      position: relative;
+      flex-shrink: 0;
+    }
 
-/* HERO IMAGE */
+    .plans-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(37,99,235,0.15);
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+    }
 
-.hero-image{
-position:relative;
-max-width:600px;
-width:100%;
-}
+    /* Floating badges */
+    .badge {
+      position: absolute;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+      padding: 10px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #1a1a2e;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 3;
+    }
 
-/* MAIN PLAN */
+    .badge-top {
+      top: -16px;
+      right: -40px;
+    }
 
-.plan-main{
-background:white;
-padding:20px;
-border-radius:16px;
-box-shadow:0 50px 120px rgba(0,0,0,.7);
-}
+    .badge-bottom {
+      bottom: 16px;
+      left: -50px;
+    }
 
-.plan-main img{
-width:100%;
-display:block;
-filter:grayscale(100%) contrast(120%);
-}
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
 
-/* SECOND PLAN */
+    /* TAGLINE */
+    .tagline-section {
+      text-align: center;
+      padding: 40px 60px 20px;
+    }
 
-.plan-secondary{
-background:white;
-padding:18px;
-border-radius:14px;
-transform:rotate(-6deg);
-margin-top:20px;
-box-shadow:0 30px 80px rgba(0,0,0,.6);
-}
+    .tagline-section p {
+      font-size: 17px;
+      color: #555;
+    }
 
-.plan-secondary img{
-width:100%;
-display:block;
-filter:grayscale(100%) contrast(120%);
-}
+    .tagline-section p strong { color: #1a1a2e; }
 
-/* SECTIONS */
+    /* TOOLS GRID */
+    .tools-section {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 20px 60px 60px;
+    }
 
-.section{
-padding:120px 40px;
-max-width:1100px;
-margin:auto;
-text-align:center;
-}
+    .tool-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-.section h2{
-font-size:42px;
-margin-bottom:18px;
-}
+    .tool-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(37,99,235,0.12);
+    }
 
-.section p{
-font-size:20px;
-opacity:.8;
-}
+    .tool-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
 
-/* FEATURES */
+    .icon-blue   { background: #dbeafe; }
+    .icon-teal   { background: #ccfbf1; }
+    .icon-purple { background: #ede9fe; }
+    .icon-gray   { background: #f1f5f9; }
 
-.features{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:40px;
-margin-top:60px;
-text-align:left;
-}
+    .tool-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
 
-/* CARDS */
+    .tool-card p {
+      font-size: 12px;
+      color: #777;
+      line-height: 1.5;
+      flex: 1;
+    }
 
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:28px;
-margin-top:60px;
-}
+    .btn-tool {
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      padding: 9px 0;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s;
+    }
 
-.card{
-background:rgba(19,39,75,.6);
-padding:34px;
-border-radius:16px;
-border:1px solid rgba(255,255,255,.08);
-}
+    .btn-tool:hover { background: #1d4ed8; }
 
-.icon{
-font-size:30px;
-margin-bottom:12px;
-}
+    .btn-tool.disabled {
+      background: #e2e8f0;
+      color: #94a3b8;
+      cursor: default;
+    }
 
-/* CTA */
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 13px;
+      color: #aaa;
+      background: #fff;
+      border-top: 1px solid #f1f5f9;
+    }
 
-.cta{
-text-align:center;
-padding:140px 40px;
-background:radial-gradient(circle at top,#123a74 0%,#071629 50%,#020a14 100%);
-}
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .tools-section { grid-template-columns: repeat(2, 1fr); }
+    }
 
-.cta h2{
-font-size:44px;
-margin-bottom:16px;
-}
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .hero { flex-direction: column; padding: 40px 20px; text-align: center; }
+      .hero-buttons { justify-content: center; }
+      .hero-content h1 { font-size: 32px; }
+      .tools-section { grid-template-columns: 1fr 1fr; padding: 20px; }
+      .tagline-section { padding: 30px 20px 10px; }
+      .badge-bottom { left: 0; }
+      .badge-top { right: 0; }
+    }
 
-.cta p{
-font-size:20px;
-opacity:.8;
-margin-bottom:36px;
-}
-
-/* FOOTER */
-
-footer{
-padding:50px;
-text-align:center;
-opacity:.6;
-}
-
-/* MOBILE */
-
-@media (max-width:900px){
-
-header{
-justify-content:center;
-text-align:center;
-}
-
-.logo img{
-height:100px;
-margin-bottom:10px;
-}
-
-nav{
-justify-content:center;
-width:100%;
-}
-
-nav a{
-margin:10px 12px;
-font-size:16px;
-}
-
-.hero{
-flex-direction:column;
-padding:60px 20px;
-text-align:center;
-}
-
-.hero h1{
-font-size:40px;
-}
-
-.hero p{
-font-size:18px;
-}
-
-.btn{
-margin-bottom:12px;
-}
-
-.plan-secondary{
-display:none;
-}
-
-}
-
-</style>
-
+    @media (max-width: 480px) {
+      .tools-section { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
+  <!-- NAV -->
+  <nav>
+    <div class="logo">
+      <svg viewBox="0 0 36 36" fill="none" xmlns="[w3.org](http://www.w3.org/2000/svg)">
+        <rect width="36" height="36" rx="8" fill="#2563eb"/>
+        <path d="M10 13C10 11.3 11.3 10 13 10H23C24.7 10 26 11.3 26 13V14.5C26 16.2 24.7 17.5 23 17.5H13C11.3 17.5 10 18.8 10 20.5V23C10 24.7 11.3 26 13 26H26" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <div class="logo-text">
+        <span>Structra</span>
+        <span>A platform by Structra Technologies</span>
+      </div>
+    </div>
 
-<div class="logo">
-<img src="Structra-logo.png">
-</div>
+    <ul class="nav-links">
+      <li><a href="#">Platform</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
 
-<nav>
-<a href="#">Platform</a>
-<a href="#">Products</a>
-<a href="#">How it Works</a>
-<a href="#">Login</a>
-</nav>
+    <div class="nav-right">
+      <button class="btn-login">Log In ▾</button>
+    </div>
+  </nav>
 
-</header>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Build Smarter<br>with <span>Structra</span></h1>
+      <p>AI-powered tools for construction, inspections, and property insights.</p>
+      <div class="hero-buttons">
+        <button class="btn-primary">Get Started</button>
+        <button class="btn-secondary">View Products</button>
+      </div>
+    </div>
 
-<section class="hero">
+    <div class="hero-visual">
+      <div class="badge badge-top">
+        <div class="badge-dot" style="background:#22c55e;"></div>
+        Plan Ready
+      </div>
 
-<div class="hero-text">
+      <div class="plans-card">
+        <svg viewBox="0 0 280 320" xmlns="[w3.org](http://www.w3.org/2000/svg)" width="280" height="320">
 
-<span class="tag">AI Construction Platform</span>
+          <!-- Background -->
+          <rect width="280" height="320" rx="16" fill="#f8fafc"/>
+          <rect x="8" y="8" width="264" height="304" rx="12" fill="white" stroke="#e2e8f0" stroke-width="1"/>
 
-<h1>The Future of Construction Intelligence</h1>
+          <!-- Title bar -->
+          <rect x="8" y="8" width="264" height="28" rx="12" fill="#2563eb"/>
+          <rect x="8" y="24" width="264" height="12" fill="#2563eb"/>
+          <text x="20" y="27" font-family="Segoe UI, sans-serif" font-size="10" font-weight="700" fill="white">FLOOR PLAN — LEVEL 1</text>
+          <text x="220" y="27" font-family="Segoe UI, sans-serif" font-size="9" fill="#93c5fd">1 : 100</text>
 
-<p>
-AI powered inspections, estimating and project tools built for builders, inspectors and property buyers.
-</p>
+          <!-- Grid lines (subtle) -->
+          <line x1="30" y1="50" x2="30" y2="265" stroke="#f1f5f9" stroke-width="0.5"/>
+          <line x1="80" y1="50" x2="80" y2="265" stroke="#f1f5f9" stroke-width="0.5"/>
+          <line x1="130" y1="50" x2="130" y2="265" stroke="#f1f5f9" stroke-width="0.5"/>
+          <line x1="180" y1="50" x2="180" y2="265" stroke="#f1f5f9" stroke-width="0.5"/>
+          <line x1="230" y1="50" x2="230" y2="265" stroke="#f1f5f9" stroke-width="0.5"/>
+          <line x1="25" y1="60" x2="260" y2="60" stroke="#f1f5f9" stroke-width="0.5"/>
+          <line x1="25" y1="110" x2="260" y2="110" stroke="#f1f5f9" stroke-width="0.5"/>
+          <line x1="25" y1="160" x2="260" y2="160" stroke="#f1f5f9" stroke-width="0.5"/>
+          <line x1="25" y1="210" x2="260" y2="210" stroke="#f1f5f9" stroke-width="0.5"/>
 
-<a class="btn primary">Explore Platform</a> <a class="btn secondary">See How It Works</a>
+          <!-- Outer walls (thick) -->
+          <rect x="28" y="50" width="224" height="210" rx="2" fill="none" stroke="#1e293b" stroke-width="3.5"/>
 
-</div>
+          <!-- Room fill colors -->
+          <rect x="30" y="52" width="108" height="118" fill="#eff6ff" opacity="0.6"/>
+          <rect x="138" y="52" width="112" height="70" fill="#f0fdf4" opacity="0.6"/>
+          <rect x="138" y="122" width="112" height="48" fill="#fdf4ff" opacity="0.6"/>
+          <rect x="30" y="170" width="108" height="88" fill="#fff7ed" opacity="0.6"/>
+          <rect x="138" y="170" width="112" height="88" fill="#f0fdf4" opacity="0.6"/>
 
-<div class="hero-image">
+          <!-- Interior walls -->
+          <line x1="138" y1="50" x2="138" y2="260" stroke="#1e293b" stroke-width="2.5"/>
+          <line x1="28" y1="170" x2="252" y2="170" stroke="#1e293b" stroke-width="2.5"/>
+          <line x1="138" y1="122" x2="252" y2="122" stroke="#1e293b" stroke-width="2"/>
 
-<div class="plan-main">
-<img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80">
-</div>
+          <!-- Door gaps and arcs -->
+          <!-- Living room door -->
+          <rect x="138" y="88" width="18" height="3" fill="white"/>
+          <path d="M138 88 Q156 88 156 106" fill="none" stroke="#2563eb" stroke-width="1.2" stroke-dasharray="3,2"/>
+          <line x1="138" y1="88" x2="156" y2="88" stroke="white" stroke-width="3"/>
 
-<div class="plan-secondary">
-<img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80">
-</div>
+          <!-- Bedroom 2 door -->
+          <rect x="138" y="188" width="18" height="3" fill="white"/>
+          <path d="M138 188 Q156 188 156 206" fill="none" stroke="#2563eb" stroke-width="1.2" stroke-dasharray="3,2"/>
+          <line x1="138" y1="188" x2="156" y2="188" stroke="white" stroke-width="3"/>
 
-</div>
+          <!-- Kitchen door -->
+          <rect x="55" y="170" width="3" height="18" fill="white"/>
+          <path d="M55 170 Q55 188 73 188" fill="none" stroke="#2563eb" stroke-width="1.2" stroke-dasharray="3,2"/>
+          <line x1="55" y1="170" x2="55" y2="188" stroke="white" stroke-width="3"/>
 
-</section>
+          <!-- Bathroom door -->
+          <rect x="138" y="136" width="16" height="3" fill="white"/>
+          <path d="M138 136 Q154 136 154 152" fill="none" stroke="#2563eb" stroke-width="1.2" stroke-dasharray="3,2"/>
+          <line x1="138" y1="136" x2="154" y2="136" stroke="white" stroke-width="3"/>
 
-<section class="section">
+          <!-- Front entrance -->
+          <rect x="75" y="257" width="3" height="22" fill="white"/>
+          <rect x="78" y="257" width="30" height="3" fill="white"/>
+          <rect x="108" y="257" width="3" height="22" fill="white"/>
+          <path d="M75 260 Q75 278 93 278" fill="none" stroke="#2563eb" stroke-width="1.2" stroke-dasharray="3,2"/>
 
-<h2>One Platform. Every Construction Workflow.</h2>
+          <!-- FURNITURE -->
 
-<p>Structra connects inspections, estimates and projects in one AI powered platform.</p>
+          <!-- Sofa (L-shape) -->
+          <rect x="38" y="130" width="55" height="18" rx="4" fill="#bfdbfe" stroke="#93c5fd" stroke-width="1"/>
+          <rect x="38" y="122" width="55" height="10" rx="3" fill="#93c5fd"/>
+          <rect x="90" y="122" width="14" height="26" rx="3" fill="#93c5fd"/>
 
-</section>
+          <!-- Coffee table -->
+          <rect x="52" y="105" width="28" height="16" rx="2" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
 
-<section class="cta">
+          <!-- TV unit -->
+          <rect x="36" y="54" width="60" height="8" rx="2" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+          <rect x="58" y="57" width="16" height="3" rx="1" fill="#94a3b8"/>
 
-<h2>Ready to build smarter?</h2>
+          <!-- Bed 1 (master) -->
+          <rect x="148" y="58" width="40" height="55" rx="4" fill="#bfdbfe" stroke="#93c5fd" stroke-width="1"/>
+          <rect x="148" y="58" width="40" height="14" rx="4" fill="#93c5fd"/>
+          <rect x="153" y="65" width="12" height="8" rx="2" fill="#dbeafe"/>
+          <rect x="171" y="65" width="12" height="8" rx="2" fill="#dbeafe"/>
 
-<p>Start using Structra to power inspections, estimates and construction workflows.</p>
+          <!-- Bedside tables -->
+          <rect x="144" y="72" width="8" height="8" rx="1" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="0.5"/>
+          <rect x="192" y="72" width="8" height="8" rx="1" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="0.5"/>
 
-<a class="btn primary">Get Started</a>
+          <!-- Bathroom fixtures -->
+          <rect x="142" y="126" width="22" height="14" rx="3" fill="#bae6fd" stroke="#7dd3fc" stroke-width="1"/>
+          <circle cx="153" cy="133" r="3" fill="#7dd3fc"/>
+          <rect x="168" y="126" width="14" height="14" rx="2" fill="#e0f2fe" stroke="#7dd3fc" stroke-width="1"/>
 
-</section>
+          <!-- Kitchen counter L-shape -->
+          <rect x="36" y="174" width="70" height="10" rx="2" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+          <rect x="36" y="174" width="10" height="60" rx="2" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+          <!-- Sink -->
+          <rect x="58" y="176" width="18" height="7" rx="2" fill="#bae6fd" stroke="#7dd3fc" stroke-width="0.8"/>
+          <!-- Stove burners -->
+          <circle cx="88" cy="178" r="2.5" fill="none" stroke="#94a3b8" stroke-width="1"/>
+          <circle cx="96" cy="178" r="2.5" fill="none" stroke="#94a3b8" stroke-width="1"/>
 
-<footer>
+          <!-- Dining table -->
+          <rect x="58" y="210" width="46" height="30" rx="4" fill="#fde68a" stroke="#fbbf24" stroke-width="1" opacity="0.8"/>
+          <rect x="55" y="214" width="6" height="8" rx="1" fill="#fbbf24" opacity="0.6"/>
+          <rect x="55" y="228" width="6" height="8" rx="1" fill="#fbbf24" opacity="0.6"/>
+          <rect x="101" y="214" width="6" height="8" rx="1" fill="#fbbf24" opacity="0.6"/>
+          <rect x="101" y="228" width="6" height="8" rx="1" fill="#fbbf24" opacity="0.6"/>
 
-© Structra Technologies
+          <!-- Bed 2 -->
+          <rect x="148" y="178" width="38" height="50" rx="4" fill="#bbf7d0" stroke="#86efac" stroke-width="1"/>
+          <rect x="148" y="178" width="38" height="13" rx="4" fill="#86efac"/>
+          <rect x="152" y="184" width="11" height="7" rx="2" fill="#d1fae5"/>
+          <rect x="169" y="184" width="11" height="7" rx="2" fill="#d1fae5"/>
 
-</footer>
+          <!-- Wardrobe bed 2 -->
+          <rect x="192" y="178" width="16" height="50" rx="2" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1"/>
+          <line x1="200" y1="178" x2="200" y2="228" stroke="#cbd5e1" stroke-width="0.8"/>
+
+          <!-- Room Labels -->
+          <text x="84" y="97" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#1e40af" font-weight="700">LIVING ROOM</text>
+
+          <text x="185" y="96" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#166534" font-weight="700">MASTER BED</text>
+
+          <text x="165" y="135" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#6b21a8" font-weight="700">BATH</text>
+
+          <text x="84" y="200" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#9a3412" font-weight="700">KITCHEN / DINING</text>
+
+          <text x="178" y="242" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="9" fill="#166534" font-weight="700">BEDROOM 2</text>
+
+          <!-- Dimension lines -->
+          <line x1="28" y1="275" x2="252" y2="275" stroke="#94a3b8" stroke-width="0.8"/>
+          <line x1="28" y1="272" x2="28" y2="278" stroke="#94a3b8" stroke-width="0.8"/>
+          <line x1="252" y1="272" x2="252" y2="278" stroke="#94a3b8" stroke-width="0.8"/>
+          <text x="140" y="284" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="8" fill="#94a3b8">12.5 m</text>
+
+          <!-- Scale bar -->
+          <rect x="20" y="296" width="20" height="4" fill="#2563eb" rx="1"/>
+          <rect x="40" y="296" width="20" height="4" fill="#e2e8f0" rx="1"/>
+          <rect x="60" y="296" width="20" height="4" fill="#2563eb" rx="1"/>
+          <text x="20" y="308" font-family="Segoe UI, sans-serif" font-size="7.5" fill="#94a3b8">0      5     10 m</text>
+
+          <!-- Compass rose -->
+          <circle cx="248" cy="298" r="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+          <polygon points="248,289 251,297 248,295 245,297" fill="#2563eb"/>
+          <polygon points="248,307 251,299 248,301 245,299" fill="#cbd5e1"/>
+          <text x="248" y="292" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="6" font-weight="700" fill="white">N</text>
+
+        </svg>
+      </div>
+
+      <div class="badge badge-bottom">
+        <div class="badge-dot" style="background:#2563eb;"></div>
+        AI-Powered ✦
+      </div>
+    </div>
+  </section>
+
+  <!-- TAGLINE -->
+  <div class="tagline-section">
+    <p><strong>Connect</strong> property buyers, inspectors, builders, and subcontractors in one AI platform.</p>
+  </div>
+
+  <!-- TOOLS -->
+  <section class="tools-section">
+
+    <div class="tool-card">
+      <div class="tool-icon icon-blue">🏡</div>
+      <h3>Home Buyers</h3>
+      <p>AI insights for property buyers — know exactly what you're buying before you commit.</p>
+      <button class="btn-tool">Launch Tool</button>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-icon icon-teal">🔍</div>
+      <h3>Structra Inspect</h3>
+      <p>Professional inspection software that makes reports faster, smarter, and shareable.</p>
+      <button class="btn-tool">Launch Tool</button>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-icon icon-purple">📊</div>
+      <h3>Structra Estimate</h3>
+      <p>AI construction estimating platform — accurate quotes in minutes, not days.</p>
+      <button class="btn-tool">Launch Tool</button>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-icon icon-gray">📁</div>
+      <h3>Projects</h3>
+      <p>Manage construction projects end-to-end. Collaboration tools coming soon.</p>
+      <button class="btn-tool disabled" disabled>Coming Soon</button>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2025 Structra Technologies. All rights reserved.
+  </footer>
 
 </body>
 </html>
