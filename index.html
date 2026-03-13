@@ -278,7 +278,387 @@
   <!-- HEADER -->
   <header>
     <div class="logo">
+      <img src=<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Structra – Build Smarter</title>
+  <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap)" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #060f1c;
+      color: #ffffff;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Blueprint grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(30, 100, 200, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(30, 100, 200, 0.07) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 8px;
+      border: 1px solid rgba(30, 120, 255, 0.2);
+      border-radius: 16px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 3rem;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.6rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      height: 48px;
+      width: 48px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .logo-text h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    .logo-text span {
+      font-size: 0.65rem;
+      color: #7a9cc5;
+      font-weight: 400;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #d0dff0;
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding-bottom: 4px;
+      transition: color 0.2s;
+    }
+
+    nav a.active {
+      color: #ffffff;
+      border-bottom: 2px solid #1a7fff;
+    }
+
+    .login-btn {
+      background: #1a7fff;
+      color: #fff;
+      border: none;
+      padding: 0.55rem 1.4rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4.5rem 0 3rem;
+      gap: 2rem;
+    }
+
+    .hero-left {
+      flex: 1;
+      max-width: 520px;
+    }
+
+    .hero-left h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .hero-left p {
+      font-size: 1.05rem;
+      color: #a8c0d8;
+      margin-bottom: 2.2rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: #1a7fff;
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.8rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.7);
+      padding: 0.72rem 1.8rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* CITY VISUAL */
+    .hero-right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      max-width: 480px;
+    }
+
+    .city-visual {
+      width: 100%;
+      max-width: 440px;
+      aspect-ratio: 1;
+      background: radial-gradient(ellipse at center, rgba(0,100,255,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* BOTTOM TEXT */
+    .connect-banner {
+      text-align: center;
+      font-size: 1.15rem;
+      font-weight: 600;
+      padding: 1.5rem 0 2.5rem;
+    }
+
+    /* TOOL CARDS */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+      padding-bottom: 4rem;
+    }
+
+    .tool-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 1.8rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
+    }
+
+    .card-btn {
+      background: #1a7fff;
+      color: #fff;
+      padding: .5rem 1.2rem;
+      border-radius: 50px;
+      border: none;
+      font-weight: 600;
+      width: fit-content;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: .8rem;
+      color: #446;
+    }
+
+    /* MODAL */
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .modal {
+      background: #0c1a2b;
+      border: 1px solid #1a7fff;
+      border-radius: 14px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+    }
+
+    .modal h3 {
+      font-size: 1.4rem;
+      margin-bottom: .6rem;
+    }
+
+    .modal p {
+      color: #aac5e0;
+      font-size: .9rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .close-modal {
+      background: #1a7fff;
+      color: #fff;
+      border: none;
+      padding: .55rem 1.4rem;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+<div class="page-wrapper">
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
       <img src="blob:[use.ai](https://use.ai/f3a42266-7ce2-40fa-90c8-d7ea2a36ae9a)" alt="Structra Logo">
+      <div class="logo-text">
+        <h1>Structra</h1>
+        <span>A platform by Structra Technologies</span>
+      </div>
+    </div>
+
+    <nav>
+      <a class="active">Platform</a>
+      <a>Products</a>
+      <a>About</a>
+    </nav>
+
+    <button class="login-btn">Log In</button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <h2>Build Smarter with Structra</h2>
+      <p>AI-powered tools for constructions, and property insights</p>
+
+      <div class="hero-buttons">
+        <button class="btn-primary" id="openModal">Get Started</button>
+        <button class="btn-outline">View Products</button>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="city-visual">
+        <img src="[i.ibb.co](https://i.ibb.co/2WmCGCG/futuristic-city.png)" width="100%" />
+      </div>
+    </div>
+  </section>
+
+  <div class="connect-banner">
+    Connect property buyers, inspectors, builders, and subcontractors in one AI platform
+  </div>
+
+  <!-- TOOLS -->
+  <section class="tools-grid">
+
+    <div class="tool-card">
+      <h3>Home Buyers</h3>
+      <p>Run self-prompted inspections at open homes. Download PDF reports.</p>
+      <button class="card-btn">Launch Tool</button>
+    </div>
+
+    <div class="tool-card">
+      <h3>Structra Inspect</h3>
+      <p>AI-driven inspection workflows with smart reporting.</p>
+      <button class="card-btn">Launch Tool</button>
+    </div>
+
+    <div class="tool-card">
+      <h3>Structra Estimate</h3>
+      <p>Automated build cost estimation with AI insights.</p>
+      <button class="card-btn" disabled>Coming Soon</button>
+    </div>
+
+    <div class="tool-card">
+      <h3>Projects</h3>
+      <p>Manage builds end-to-end with timelines, teams & costs.</p>
+      <button class="card-btn">View Projects</button>
+    </div>
+
+  </section>
+
+  <footer>
+    © 2024 Structra Technologies. All rights reserved.
+  </footer>
+
+</div>
+
+
+<!-- MODAL -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <h3>Welcome to Structra</h3>
+    <p>Get started by creating an account or signing in to your dashboard.</p>
+    <button class="close-modal" id="closeModal">Continue</button>
+  </div>
+</div>
+
+
+<script>
+  const modalBg = document.getElementById('modalBg');
+  const openModal = document.getElementById('openModal');
+  const closeModal = document.getElementById('closeModal');
+
+  openModal.onclick = () => modalBg.style.display = "flex";
+  closeModal.onclick = () => modalBg.style.display = "none";
+
+  modalBg.onclick = (e) => {
+    if (e.target === modalBg) modalBg.style.display = "none";
+  };
+</script>
+
+</body>
+</html>
+
       <div class="logo-text">
         <h1>Structra</h1>
         <span>A platform by Structra Technologies</span>
