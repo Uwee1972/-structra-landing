@@ -7,60 +7,7 @@
 <title>Structra</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-/* MOBILE RESPONSIVE FIX */
 
-@media (max-width: 900px){
-
-.hero{
-flex-direction:column;
-text-align:center;
-gap:60px;
-padding:80px 20px;
-}
-
-.hero-text{
-max-width:100%;
-}
-
-.hero h1{
-font-size:42px;
-}
-
-.hero p{
-font-size:18px;
-}
-
-.hero-image{
-width:100%;
-height:auto;
-display:flex;
-justify-content:center;
-}
-
-.plan-main{
-position:relative;
-width:90%;
-right:auto;
-}
-
-.plan-secondary{
-display:none;
-}
-
-/* smaller logo on phone */
-
-.logo img{
-height:80px;
-}
-
-/* stack nav nicely */
-
-nav a{
-margin-left:18px;
-font-size:16px;
-}
-
-}
 <style>
 
 /* GLOBAL */
@@ -82,11 +29,9 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-
 background-image:
 linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
 linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-
 background-size:60px 60px;
 animation:gridMove 35s linear infinite;
 z-index:-2;
@@ -106,13 +51,10 @@ align-items:center;
 padding:20px 40px;
 max-width:1300px;
 margin:auto;
-
 position:sticky;
 top:0;
-
 background:rgba(6,20,37,.95);
 backdrop-filter:blur(10px);
-
 border-bottom:1px solid rgba(255,255,255,.05);
 z-index:100;
 }
@@ -120,8 +62,6 @@ z-index:100;
 .logo img{
 height:180px;
 }
-
-/* NAV */
 
 nav a{
 margin-left:34px;
@@ -132,21 +72,15 @@ opacity:.85;
 font-weight:600;
 }
 
-nav a:hover{
-opacity:1;
-}
-
 /* HERO */
 
 .hero{
 display:flex;
 align-items:center;
 justify-content:space-between;
-
 padding:120px 40px;
 max-width:1300px;
 margin:auto;
-
 gap:100px;
 }
 
@@ -158,10 +92,8 @@ max-width:580px;
 display:inline-block;
 background:rgba(59,130,246,.15);
 color:#60a5fa;
-
 padding:10px 20px;
 border-radius:20px;
-
 font-size:15px;
 margin-bottom:22px;
 }
@@ -201,7 +133,7 @@ background:#1e293b;
 border:1px solid rgba(255,255,255,.15);
 }
 
-/* BLUEPRINT HERO */
+/* HERO BLUEPRINT */
 
 .hero-image{
 position:relative;
@@ -209,17 +141,13 @@ width:650px;
 height:460px;
 }
 
-/* MAIN PLAN */
-
 .plan-main{
 position:absolute;
 top:0;
 right:0;
-
 width:620px;
 background:white;
 padding:20px;
-
 border-radius:16px;
 box-shadow:0 60px 140px rgba(0,0,0,.7);
 }
@@ -229,20 +157,15 @@ width:100%;
 filter:grayscale(100%) contrast(120%);
 }
 
-/* SECOND PLAN */
-
 .plan-secondary{
 position:absolute;
 bottom:-40px;
 left:-60px;
-
 width:420px;
 background:white;
 padding:18px;
-
 border-radius:14px;
 opacity:.9;
-
 transform:rotate(-6deg);
 box-shadow:0 40px 90px rgba(0,0,0,.6);
 }
@@ -252,16 +175,14 @@ width:100%;
 filter:grayscale(100%) contrast(120%);
 }
 
-/* AI SCAN */
+/* SCAN LINE */
 
 .scan-line{
 position:absolute;
 top:0;
 left:0;
-
 width:100%;
 height:4px;
-
 background:#3b82f6;
 animation:scan 5s linear infinite;
 }
@@ -275,13 +196,10 @@ animation:scan 5s linear infinite;
 
 .marker{
 position:absolute;
-
 width:12px;
 height:12px;
-
 background:#3b82f6;
 border-radius:50%;
-
 box-shadow:0 0 12px #3b82f6;
 }
 
@@ -294,10 +212,8 @@ box-shadow:0 0 12px #3b82f6;
 .section{
 padding:120px 40px;
 text-align:center;
-
 max-width:1100px;
 margin:auto;
-
 border-top:1px solid rgba(255,255,255,.05);
 }
 
@@ -335,18 +251,6 @@ background:rgba(19,39,75,.6);
 padding:38px;
 border-radius:18px;
 border:1px solid rgba(255,255,255,.06);
-transition:.3s;
-}
-
-.card:hover{
-transform:translateY(-10px);
-border-color:#3b82f6;
-box-shadow:0 30px 70px rgba(0,0,0,.6);
-}
-
-.icon{
-font-size:34px;
-margin-bottom:14px;
 }
 
 /* CTA */
@@ -354,20 +258,7 @@ margin-bottom:14px;
 .cta{
 text-align:center;
 padding:160px 40px;
-
 background:radial-gradient(circle at top,#123a74 0%,#071629 40%,#020a14 100%);
-border-top:1px solid rgba(255,255,255,.05);
-}
-
-.cta h2{
-font-size:50px;
-margin-bottom:20px;
-}
-
-.cta p{
-opacity:.75;
-font-size:22px;
-margin-bottom:40px;
 }
 
 /* FOOTER */
@@ -376,6 +267,50 @@ footer{
 padding:60px;
 text-align:center;
 opacity:.6;
+}
+
+/* MOBILE FIX */
+
+@media (max-width:900px){
+
+.hero{
+flex-direction:column;
+text-align:center;
+gap:60px;
+padding:80px 20px;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+.hero-image{
+width:100%;
+height:auto;
+}
+
+.plan-main{
+position:relative;
+width:100%;
+}
+
+.plan-secondary{
+display:none;
+}
+
+.logo img{
+height:80px;
+}
+
+nav a{
+margin-left:18px;
+font-size:16px;
+}
+
 }
 
 </style>
@@ -447,64 +382,6 @@ built for builders, inspectors and property buyers.
 <p>
 Structra connects inspections, estimates and projects in one AI powered platform.
 </p>
-
-<div class="features">
-
-<div>
-<h3>AI Construction Estimating</h3>
-<p>Generate project estimates instantly using AI cost modeling.</p>
-</div>
-
-<div>
-<h3>Inspection Reports</h3>
-<p>Create professional inspection reports with automated insights.</p>
-</div>
-
-<div>
-<h3>Project Management</h3>
-<p>Manage builders, subcontractors and projects in one workspace.</p>
-</div>
-
-<div>
-<h3>Property Intelligence</h3>
-<p>Understand property condition before purchasing.</p>
-</div>
-
-</div>
-
-</section>
-
-<section class="section">
-
-<h2>Structra Products</h2>
-
-<div class="cards">
-
-<div class="card">
-<div class="icon">🏠</div>
-<h3>Home Buyers Inspection</h3>
-<p>Professional home buyer inspection reports.</p>
-</div>
-
-<div class="card">
-<div class="icon">🔎</div>
-<h3>Structra Inspect</h3>
-<p>Inspection software with automated AI reports.</p>
-</div>
-
-<div class="card">
-<div class="icon">📐</div>
-<h3>Structra Estimate</h3>
-<p>AI powered construction estimating platform.</p>
-</div>
-
-<div class="card">
-<div class="icon">📁</div>
-<h3>Projects</h3>
-<p>Manage construction projects and workflows.</p>
-</div>
-
-</div>
 
 </section>
 
