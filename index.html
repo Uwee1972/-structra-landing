@@ -7,7 +7,60 @@
 <title>Structra</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+/* MOBILE RESPONSIVE FIX */
 
+@media (max-width: 900px){
+
+.hero{
+flex-direction:column;
+text-align:center;
+gap:60px;
+padding:80px 20px;
+}
+
+.hero-text{
+max-width:100%;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+.hero-image{
+width:100%;
+height:auto;
+display:flex;
+justify-content:center;
+}
+
+.plan-main{
+position:relative;
+width:90%;
+right:auto;
+}
+
+.plan-secondary{
+display:none;
+}
+
+/* smaller logo on phone */
+
+.logo img{
+height:80px;
+}
+
+/* stack nav nicely */
+
+nav a{
+margin-left:18px;
+font-size:16px;
+}
+
+}
 <style>
 
 /* GLOBAL */
