@@ -20,7 +20,7 @@ background:#061425;
 overflow-x:hidden;
 }
 
-/* ANIMATED GRID */
+/* GRID BACKGROUND */
 
 body::before{
 content:'';
@@ -33,13 +33,7 @@ background-image:
 linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
 linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
 background-size:60px 60px;
-animation:gridMove 35s linear infinite;
-z-index:-2;
-}
-
-@keyframes gridMove{
-0%{transform:translateY(0)}
-100%{transform:translateY(60px)}
+z-index:-1;
 }
 
 /* HEADER */
@@ -51,24 +45,28 @@ align-items:center;
 padding:20px 40px;
 max-width:1300px;
 margin:auto;
-position:sticky;
-top:0;
-background:rgba(6,20,37,.95);
-backdrop-filter:blur(10px);
-border-bottom:1px solid rgba(255,255,255,.05);
-z-index:100;
+flex-wrap:wrap;
 }
 
+/* BIG LOGO */
+
 .logo img{
-height:180px;
+height:120px;
+}
+
+/* NAV */
+
+nav{
+display:flex;
+flex-wrap:wrap;
 }
 
 nav a{
-margin-left:34px;
+margin-left:28px;
 font-size:18px;
 color:white;
 text-decoration:none;
-opacity:.85;
+opacity:.9;
 font-weight:600;
 }
 
@@ -78,153 +76,120 @@ font-weight:600;
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:120px 40px;
+gap:80px;
+padding:100px 40px;
 max-width:1300px;
 margin:auto;
-gap:100px;
+flex-wrap:wrap;
 }
 
 .hero-text{
-max-width:580px;
+max-width:560px;
 }
 
 .tag{
 display:inline-block;
 background:rgba(59,130,246,.15);
 color:#60a5fa;
-padding:10px 20px;
+padding:10px 18px;
 border-radius:20px;
-font-size:15px;
-margin-bottom:22px;
+font-size:14px;
+margin-bottom:20px;
 }
 
 .hero h1{
-font-size:70px;
+font-size:64px;
+margin-bottom:20px;
 line-height:1.05;
-margin-bottom:24px;
 }
 
 .hero p{
-opacity:.75;
-font-size:24px;
-margin-bottom:40px;
+font-size:22px;
+opacity:.8;
+margin-bottom:36px;
 }
 
 /* BUTTONS */
 
 .btn{
-padding:20px 42px;
-border-radius:12px;
-margin-right:16px;
-font-weight:600;
-font-size:19px;
 display:inline-block;
-cursor:pointer;
+padding:18px 34px;
+border-radius:12px;
+font-size:18px;
+font-weight:600;
+margin-right:16px;
 text-decoration:none;
 }
 
 .primary{
 background:linear-gradient(135deg,#3b82f6,#2563eb);
-box-shadow:0 12px 40px rgba(37,99,235,.45);
+color:white;
+box-shadow:0 10px 30px rgba(37,99,235,.4);
 }
 
 .secondary{
 background:#1e293b;
-border:1px solid rgba(255,255,255,.15);
+border:1px solid rgba(255,255,255,.2);
+color:white;
 }
 
-/* HERO BLUEPRINT */
+/* HERO IMAGE */
 
 .hero-image{
 position:relative;
-width:650px;
-height:460px;
+max-width:600px;
+width:100%;
 }
 
+/* MAIN PLAN */
+
 .plan-main{
-position:absolute;
-top:0;
-right:0;
-width:620px;
 background:white;
 padding:20px;
 border-radius:16px;
-box-shadow:0 60px 140px rgba(0,0,0,.7);
+box-shadow:0 50px 120px rgba(0,0,0,.7);
 }
 
 .plan-main img{
 width:100%;
+display:block;
 filter:grayscale(100%) contrast(120%);
 }
 
+/* SECOND PLAN */
+
 .plan-secondary{
-position:absolute;
-bottom:-40px;
-left:-60px;
-width:420px;
 background:white;
 padding:18px;
 border-radius:14px;
-opacity:.9;
 transform:rotate(-6deg);
-box-shadow:0 40px 90px rgba(0,0,0,.6);
+margin-top:20px;
+box-shadow:0 30px 80px rgba(0,0,0,.6);
 }
 
 .plan-secondary img{
 width:100%;
+display:block;
 filter:grayscale(100%) contrast(120%);
 }
 
-/* SCAN LINE */
-
-.scan-line{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:4px;
-background:#3b82f6;
-animation:scan 5s linear infinite;
-}
-
-@keyframes scan{
-0%{top:0}
-100%{top:100%}
-}
-
-/* MARKERS */
-
-.marker{
-position:absolute;
-width:12px;
-height:12px;
-background:#3b82f6;
-border-radius:50%;
-box-shadow:0 0 12px #3b82f6;
-}
-
-.m1{top:120px;left:160px;}
-.m2{top:240px;left:320px;}
-.m3{top:170px;left:450px;}
-
-/* SECTION */
+/* SECTIONS */
 
 .section{
 padding:120px 40px;
-text-align:center;
 max-width:1100px;
 margin:auto;
-border-top:1px solid rgba(255,255,255,.05);
+text-align:center;
 }
 
 .section h2{
-font-size:46px;
-margin-bottom:20px;
+font-size:42px;
+margin-bottom:18px;
 }
 
 .section p{
-opacity:.75;
 font-size:20px;
+opacity:.8;
 }
 
 /* FEATURES */
@@ -233,7 +198,7 @@ font-size:20px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 gap:40px;
-margin-top:80px;
+margin-top:60px;
 text-align:left;
 }
 
@@ -241,74 +206,94 @@ text-align:left;
 
 .cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:30px;
-margin-top:70px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:28px;
+margin-top:60px;
 }
 
 .card{
 background:rgba(19,39,75,.6);
-padding:38px;
-border-radius:18px;
-border:1px solid rgba(255,255,255,.06);
+padding:34px;
+border-radius:16px;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.icon{
+font-size:30px;
+margin-bottom:12px;
 }
 
 /* CTA */
 
 .cta{
 text-align:center;
-padding:160px 40px;
-background:radial-gradient(circle at top,#123a74 0%,#071629 40%,#020a14 100%);
+padding:140px 40px;
+background:radial-gradient(circle at top,#123a74 0%,#071629 50%,#020a14 100%);
+}
+
+.cta h2{
+font-size:44px;
+margin-bottom:16px;
+}
+
+.cta p{
+font-size:20px;
+opacity:.8;
+margin-bottom:36px;
 }
 
 /* FOOTER */
 
 footer{
-padding:60px;
+padding:50px;
 text-align:center;
 opacity:.6;
 }
 
-/* MOBILE FIX */
+/* MOBILE */
 
 @media (max-width:900px){
 
+header{
+justify-content:center;
+text-align:center;
+}
+
+.logo img{
+height:100px;
+margin-bottom:10px;
+}
+
+nav{
+justify-content:center;
+width:100%;
+}
+
+nav a{
+margin:10px 12px;
+font-size:16px;
+}
+
 .hero{
 flex-direction:column;
+padding:60px 20px;
 text-align:center;
-gap:60px;
-padding:80px 20px;
 }
 
 .hero h1{
-font-size:42px;
+font-size:40px;
 }
 
 .hero p{
 font-size:18px;
 }
 
-.hero-image{
-width:100%;
-height:auto;
-}
-
-.plan-main{
-position:relative;
-width:100%;
+.btn{
+margin-bottom:12px;
 }
 
 .plan-secondary{
 display:none;
-}
-
-.logo img{
-height:80px;
-}
-
-nav a{
-margin-left:18px;
-font-size:16px;
 }
 
 }
@@ -343,8 +328,7 @@ font-size:16px;
 <h1>The Future of Construction Intelligence</h1>
 
 <p>
-AI powered inspections, estimating and project tools
-built for builders, inspectors and property buyers.
+AI powered inspections, estimating and project tools built for builders, inspectors and property buyers.
 </p>
 
 <a class="btn primary">Explore Platform</a> <a class="btn secondary">See How It Works</a>
@@ -354,21 +338,11 @@ built for builders, inspectors and property buyers.
 <div class="hero-image">
 
 <div class="plan-main">
-
-<div class="scan-line"></div>
-
-<div class="marker m1"></div>
-<div class="marker m2"></div>
-<div class="marker m3"></div>
-
 <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80">
-
 </div>
 
 <div class="plan-secondary">
-
 <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80">
-
 </div>
 
 </div>
@@ -379,9 +353,7 @@ built for builders, inspectors and property buyers.
 
 <h2>One Platform. Every Construction Workflow.</h2>
 
-<p>
-Structra connects inspections, estimates and projects in one AI powered platform.
-</p>
+<p>Structra connects inspections, estimates and projects in one AI powered platform.</p>
 
 </section>
 
@@ -389,9 +361,7 @@ Structra connects inspections, estimates and projects in one AI powered platform
 
 <h2>Ready to build smarter?</h2>
 
-<p>
-Start using Structra to power inspections, estimates and construction workflows.
-</p>
+<p>Start using Structra to power inspections, estimates and construction workflows.</p>
 
 <a class="btn primary">Get Started</a>
 
