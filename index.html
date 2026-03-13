@@ -5,7 +5,7 @@
 
 <title>Structra</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -15,20 +15,32 @@ body{
 margin:0;
 font-family:Inter;
 color:white;
-
-/* AI TECH BACKGROUND */
-
-background:
-radial-gradient(circle at 20% 0%, #123a74 0%, #081a34 50%, #061425 100%);
+background:#061425;
 
 /* blueprint grid */
 
 background-image:
-linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
 
 background-size:50px 50px;
 }
+
+/* glowing background */
+
+body::before{
+content:'';
+position:fixed;
+width:900px;
+height:900px;
+background:radial-gradient(circle,#2563eb40,transparent);
+top:-200px;
+left:50%;
+transform:translateX(-50%);
+filter:blur(120px);
+z-index:-1;
+}
+
 
 /* HEADER */
 
@@ -36,27 +48,38 @@ header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:25px 40px;
+padding:20px 40px;
 max-width:1200px;
 margin:auto;
+
+position:sticky;
+top:0;
+
+background:rgba(6,20,37,.85);
+backdrop-filter:blur(10px);
+
+border-bottom:1px solid rgba(255,255,255,.05);
+z-index:100;
 }
 
 .logo img{
-height:110px;
+height:42px;
 }
 
 nav a{
-margin-left:40px;
-font-size:18px;
+margin-left:32px;
+font-size:15px;
 color:white;
 text-decoration:none;
-opacity:.85;
+opacity:.7;
 font-weight:600;
+transition:.2s;
 }
 
 nav a:hover{
 opacity:1;
 }
+
 
 /* HERO */
 
@@ -64,7 +87,9 @@ opacity:1;
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:80px 40px 120px 40px;
+
+padding:120px 40px;
+
 max-width:1200px;
 margin:auto;
 gap:80px;
@@ -74,10 +99,20 @@ gap:80px;
 max-width:540px;
 }
 
+.tag{
+display:inline-block;
+background:rgba(59,130,246,.15);
+color:#60a5fa;
+padding:6px 14px;
+border-radius:20px;
+font-size:13px;
+margin-bottom:18px;
+}
+
 .hero h1{
-font-size:60px;
-margin-bottom:20px;
+font-size:64px;
 line-height:1.1;
+margin-bottom:20px;
 }
 
 .hero p{
@@ -85,6 +120,7 @@ opacity:.75;
 font-size:20px;
 margin-bottom:40px;
 }
+
 
 /* BUTTONS */
 
@@ -100,17 +136,18 @@ transition:.2s;
 
 .primary{
 background:linear-gradient(135deg,#3b82f6,#2563eb);
-box-shadow:0 10px 30px rgba(37,99,235,.4);
+box-shadow:0 10px 40px rgba(37,99,235,.4);
 }
 
 .primary:hover{
-transform:translateY(-2px);
+transform:translateY(-3px);
 }
 
 .secondary{
 background:#1e293b;
 border:1px solid rgba(255,255,255,.15);
 }
+
 
 /* HERO IMAGE */
 
@@ -120,34 +157,34 @@ position:relative;
 
 .hero-image img{
 width:560px;
-border-radius:22px;
-box-shadow:0 50px 120px rgba(0,0,0,.7);
+border-radius:24px;
+box-shadow:0 50px 140px rgba(0,0,0,.8);
 }
-
-/* blue glow */
 
 .hero-image::before{
 content:'';
 position:absolute;
-width:650px;
-height:650px;
-background:radial-gradient(circle, rgba(59,130,246,.35), transparent);
+width:700px;
+height:700px;
+background:radial-gradient(circle, rgba(59,130,246,.4), transparent);
 filter:blur(120px);
 z-index:-1;
 }
 
-/* PLATFORM SECTION */
+
+/* SECTION */
 
 .section{
 padding:120px 40px;
 text-align:center;
 max-width:1100px;
 margin:auto;
+border-top:1px solid rgba(255,255,255,.05);
 }
 
 .section h2{
-font-size:40px;
-margin-bottom:18px;
+font-size:42px;
+margin-bottom:20px;
 }
 
 .section p{
@@ -155,7 +192,32 @@ opacity:.75;
 font-size:18px;
 }
 
-/* CARDS */
+
+/* FEATURES GRID */
+
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:40px;
+margin-top:80px;
+}
+
+.feature{
+text-align:left;
+}
+
+.feature h3{
+margin-bottom:10px;
+font-size:18px;
+}
+
+.feature p{
+opacity:.7;
+font-size:15px;
+}
+
+
+/* PRODUCT CARDS */
 
 .cards{
 display:grid;
@@ -165,17 +227,25 @@ margin-top:70px;
 }
 
 .card{
-background:rgba(19,39,75,.7);
-padding:32px;
+background:rgba(19,39,75,.6);
+padding:34px;
 border-radius:18px;
-backdrop-filter:blur(6px);
+
 border:1px solid rgba(255,255,255,.06);
-transition:.25s;
+
+transition:.3s;
 }
 
 .card:hover{
 transform:translateY(-10px);
-background:rgba(23,50,95,.8);
+border-color:#3b82f6;
+
+box-shadow:0 30px 70px rgba(0,0,0,.6);
+}
+
+.icon{
+font-size:28px;
+margin-bottom:14px;
 }
 
 .card h3{
@@ -190,24 +260,43 @@ margin-bottom:22px;
 }
 
 .card button{
-background:#2563eb;
+background:linear-gradient(135deg,#3b82f6,#2563eb);
 border:none;
 color:white;
-padding:10px 20px;
+padding:10px 22px;
 border-radius:8px;
 cursor:pointer;
+font-weight:600;
 }
+
+
+/* PLATFORM IMAGE */
+
+.platform-preview{
+margin-top:80px;
+}
+
+.platform-preview img{
+width:100%;
+border-radius:22px;
+box-shadow:0 60px 150px rgba(0,0,0,.7);
+}
+
 
 /* CTA */
 
 .cta{
 text-align:center;
-padding:140px 40px;
-background:linear-gradient(180deg,#071629,#020a14);
+padding:160px 40px;
+
+background:
+radial-gradient(circle at top,#123a74 0%,#071629 40%,#020a14 100%);
+
+border-top:1px solid rgba(255,255,255,.05);
 }
 
 .cta h2{
-font-size:44px;
+font-size:48px;
 margin-bottom:15px;
 }
 
@@ -217,10 +306,11 @@ margin-bottom:40px;
 font-size:18px;
 }
 
+
 /* FOOTER */
 
 footer{
-padding:50px;
+padding:60px;
 text-align:center;
 opacity:.6;
 }
@@ -230,6 +320,7 @@ opacity:.6;
 </head>
 
 <body>
+
 
 <header>
 
@@ -241,19 +332,24 @@ opacity:.6;
 <a href="#">Platform</a>
 <a href="#">Products</a>
 <a href="#">How it Works</a>
+<a href="#">Login</a>
 </nav>
 
 </header>
+
+
 
 <section class="hero">
 
 <div class="hero-text">
 
-<h1>Build Smarter with Structra</h1>
+<span class="tag">AI Construction Platform</span>
+
+<h1>The Future of Construction Software</h1>
 
 <p>
-AI-powered tools for home buyers, inspectors,
-and builders — all in one platform.
+Inspection software, AI estimating and project management
+in one intelligent platform for builders and property professionals.
 </p>
 
 <a class="btn primary">Explore Platform</a>
@@ -269,52 +365,102 @@ and builders — all in one platform.
 
 </section>
 
+
+
 <section class="section">
 
-<h2>The AI Platform for Property and Construction</h2>
+<h2>One Platform. Every Construction Workflow.</h2>
 
 <p>
-Structra connects property buyers, inspectors,
-builders, and subcontractors in one intelligent platform.
+From property inspections to AI-powered estimates and project tracking,
+Structra connects the entire building process.
 </p>
 
-<div class="cards">
+<div class="features">
 
-<div class="card">
-<h3>🏠 Home Buyers</h3>
-<p>Understand the real condition of a property before purchasing.</p>
-<button>Launch Tool</button>
+<div class="feature">
+<h3>AI Construction Estimating</h3>
+<p>Generate accurate project estimates instantly with intelligent cost modeling.</p>
 </div>
 
-<div class="card">
-<h3>🔎 Structra Inspect</h3>
-<p>Professional inspection software and automated reports.</p>
-<button>Launch Tool</button>
+<div class="feature">
+<h3>Inspection Reports</h3>
+<p>Create professional inspection reports with automated insights.</p>
 </div>
 
-<div class="card">
-<h3>📐 Structra Estimate</h3>
-<p>AI-powered construction estimating platform.</p>
-<button>Launch Tool</button>
+<div class="feature">
+<h3>Project Management</h3>
+<p>Manage projects, builders and subcontractors in one workspace.</p>
 </div>
 
-<div class="card">
-<h3>📁 Projects</h3>
-<p>Manage construction projects and workflows.</p>
-<button>Coming Soon</button>
+<div class="feature">
+<h3>Property Intelligence</h3>
+<p>Understand the real condition of properties before purchasing.</p>
 </div>
 
 </div>
 
 </section>
 
+
+
+<section class="section">
+
+<h2>Explore Structra Products</h2>
+
+<p>
+Each product works independently or together as part of the Structra platform.
+</p>
+
+<div class="cards">
+
+<div class="card">
+<div class="icon">🏠</div>
+<h3>Home Buyers</h3>
+<p>Understand the true condition of a property before purchasing.</p>
+<button>Launch Tool</button>
+</div>
+
+<div class="card">
+<div class="icon">🔎</div>
+<h3>Structra Inspect</h3>
+<p>Inspection software with automated reports and AI insights.</p>
+<button>Launch Tool</button>
+</div>
+
+<div class="card">
+<div class="icon">📐</div>
+<h3>Structra Estimate</h3>
+<p>AI-powered construction estimating platform.</p>
+<button>Launch Tool</button>
+</div>
+
+<div class="card">
+<div class="icon">📁</div>
+<h3>Projects</h3>
+<p>Manage construction projects and workflows.</p>
+<button>Coming Soon</button>
+</div>
+
+</div>
+
+
+<div class="platform-preview">
+
+<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80">
+
+</div>
+
+</section>
+
+
+
 <section class="cta">
 
 <h2>Ready to build smarter?</h2>
 
 <p>
-Start using Structra to power inspections,
-property insights and construction workflows.
+Start using Structra to power inspections, property insights and construction workflows.
 </p>
 
 <a class="btn primary">Get Started</a>
@@ -322,12 +468,14 @@ property insights and construction workflows.
 
 </section>
 
+
+
 <footer>
 
 © Structra Technologies
 
 </footer>
 
-</body>
 
+</body>
 </html>
