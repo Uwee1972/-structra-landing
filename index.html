@@ -20,7 +20,7 @@ background:#061425;
 overflow-x:hidden;
 }
 
-/* ANIMATED BLUEPRINT GRID */
+/* ANIMATED GRID */
 
 body::before{
 content:'';
@@ -35,9 +35,7 @@ linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
 linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
 
 background-size:60px 60px;
-
 animation:gridMove 35s linear infinite;
-
 z-index:-2;
 }
 
@@ -52,9 +50,7 @@ header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-
 padding:20px 40px;
-
 max-width:1300px;
 margin:auto;
 
@@ -68,11 +64,8 @@ border-bottom:1px solid rgba(255,255,255,.05);
 z-index:100;
 }
 
-/* BIG LOGO */
-
 .logo img{
 height:180px;
-width:auto;
 }
 
 /* NAV */
@@ -97,8 +90,7 @@ display:flex;
 align-items:center;
 justify-content:space-between;
 
-padding:100px 40px;
-
+padding:120px 40px;
 max-width:1300px;
 margin:auto;
 
@@ -138,15 +130,11 @@ margin-bottom:40px;
 .btn{
 padding:20px 42px;
 border-radius:12px;
-
 margin-right:16px;
-
 font-weight:600;
 font-size:19px;
-
 display:inline-block;
 cursor:pointer;
-
 text-decoration:none;
 }
 
@@ -160,68 +148,60 @@ background:#1e293b;
 border:1px solid rgba(255,255,255,.15);
 }
 
-/* BLUEPRINT PANELS */
+/* BLUEPRINT HERO */
 
 .hero-image{
 position:relative;
 width:650px;
-height:450px;
+height:460px;
 }
 
 /* MAIN PLAN */
 
 .plan-main{
-
 position:absolute;
-
 top:0;
 right:0;
 
 width:620px;
-
 background:white;
 padding:20px;
 
 border-radius:16px;
-
 box-shadow:0 60px 140px rgba(0,0,0,.7);
 }
 
 .plan-main img{
 width:100%;
+filter:grayscale(100%) contrast(120%);
 }
 
 /* SECOND PLAN */
 
 .plan-secondary{
-
 position:absolute;
-
 bottom:-40px;
 left:-60px;
 
 width:420px;
-
 background:white;
 padding:18px;
 
 border-radius:14px;
-
 opacity:.9;
 
 transform:rotate(-6deg);
-
 box-shadow:0 40px 90px rgba(0,0,0,.6);
 }
 
 .plan-secondary img{
 width:100%;
+filter:grayscale(100%) contrast(120%);
 }
 
-/* AI SCAN LINE */
+/* AI SCAN */
 
 .scan-line{
-
 position:absolute;
 top:0;
 left:0;
@@ -230,33 +210,26 @@ width:100%;
 height:4px;
 
 background:#3b82f6;
-
 animation:scan 5s linear infinite;
-
 }
 
 @keyframes scan{
-
 0%{top:0}
 100%{top:100%}
-
 }
 
 /* MARKERS */
 
 .marker{
-
 position:absolute;
 
 width:12px;
 height:12px;
 
 background:#3b82f6;
-
 border-radius:50%;
 
 box-shadow:0 0 12px #3b82f6;
-
 }
 
 .m1{top:120px;left:160px;}
@@ -266,134 +239,90 @@ box-shadow:0 0 12px #3b82f6;
 /* SECTION */
 
 .section{
-
 padding:120px 40px;
-
 text-align:center;
 
 max-width:1100px;
 margin:auto;
 
 border-top:1px solid rgba(255,255,255,.05);
-
 }
 
 .section h2{
-
 font-size:46px;
 margin-bottom:20px;
-
 }
 
 .section p{
-
 opacity:.75;
 font-size:20px;
-
 }
 
 /* FEATURES */
 
 .features{
-
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-
 gap:40px;
-
 margin-top:80px;
-
 text-align:left;
-
 }
 
 /* CARDS */
 
 .cards{
-
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-
 gap:30px;
-
 margin-top:70px;
-
 }
 
 .card{
-
 background:rgba(19,39,75,.6);
-
 padding:38px;
-
 border-radius:18px;
-
 border:1px solid rgba(255,255,255,.06);
-
 transition:.3s;
-
 }
 
 .card:hover{
-
 transform:translateY(-10px);
-
 border-color:#3b82f6;
-
 box-shadow:0 30px 70px rgba(0,0,0,.6);
-
 }
 
 .icon{
-
 font-size:34px;
 margin-bottom:14px;
-
 }
 
 /* CTA */
 
 .cta{
-
 text-align:center;
-
 padding:160px 40px;
 
 background:radial-gradient(circle at top,#123a74 0%,#071629 40%,#020a14 100%);
-
 border-top:1px solid rgba(255,255,255,.05);
-
 }
 
 .cta h2{
-
 font-size:50px;
 margin-bottom:20px;
-
 }
 
 .cta p{
-
 opacity:.75;
-
 font-size:22px;
-
 margin-bottom:40px;
-
 }
 
 /* FOOTER */
 
 footer{
-
 padding:60px;
-
 text-align:center;
-
 opacity:.6;
-
 }
 
 </style>
@@ -434,11 +363,7 @@ built for builders, inspectors and property buyers.
 
 </div>
 
-.plan-main img{
-width:100%;
-filter:grayscale(100%) contrast(120%);
-}
-
+<div class="hero-image">
 
 <div class="plan-main">
 
@@ -452,10 +377,8 @@ filter:grayscale(100%) contrast(120%);
 
 </div>
 
-.plan-secondary img{
-width:100%;
-filter:grayscale(100%) contrast(120%);
-}
+<div class="plan-secondary">
+
 <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80">
 
 </div>
