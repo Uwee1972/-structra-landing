@@ -1,432 +1,935 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Structra Tech – Smart Property Inspections</title>
+  <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap)" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<title>Structra – Build Smarter</title>
+    :root {
+      --dark: #0a0f1e;
+      --dark2: #111827;
+      --card: #141c2f;
+      --accent: #3b82f6;
+      --accent2: #60a5fa;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --green: #22c55e;
+      --red: #ef4444;
+      --radius: 14px;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-<style>
+    a { text-decoration: none; color: inherit; }
 
-*, *::before, *::after {
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 6%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,15,30,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
 
-html,body{
-font-family:'Inter',sans-serif;
-background:#060f1c;
-color:#ffffff;
-min-height:100vh;
-overflow-x:hidden;
-}
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
 
-/* Blueprint grid */
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+    }
 
-body::before{
-content:'';
-position:fixed;
-inset:0;
-background-image:
-linear-gradient(rgba(30,100,200,0.07) 1px, transparent 1px),
-linear-gradient(90deg, rgba(30,100,200,0.07) 1px, transparent 1px);
-background-size:40px 40px;
-pointer-events:none;
-z-index:0;
-}
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
 
-/* Frame */
+    .nav-links a:hover { color: var(--text); }
 
-body::after{
-content:'';
-position:fixed;
-inset:8px;
-border:1px solid rgba(30,120,255,0.2);
-border-radius:16px;
-pointer-events:none;
-z-index:0;
-}
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
 
-.page-wrapper{
-position:relative;
-z-index:1;
-max-width:1200px;
-margin:auto;
-padding:0 3rem;
-}
+    .btn-primary:hover { background: #2563eb; transform: translateY(-1px); }
 
-/* HEADER */
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.15s;
+    }
 
-header{
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:1.4rem 0;
-}
+    .btn-outline:hover { border-color: var(--accent); transform: translateY(-1px); }
 
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
-}
+    /* ── HERO ── */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 90px 6% 80px;
+      gap: 40px;
+      background: radial-gradient(ellipse at 20% 50%, rgba(59,130,246,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, rgba(96,165,250,0.08) 0%, transparent 50%);
+    }
 
-.logo-icon{
-width:42px;
-height:42px;
-background:linear-gradient(135deg,#1a9fff,#0047cc);
-border-radius:10px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:900;
-font-size:1.3rem;
-}
+    .hero-content { max-width: 520px; }
 
-.logo-text strong{
-font-size:1.35rem;
-}
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(59,130,246,0.15);
+      border: 1px solid rgba(59,130,246,0.3);
+      color: var(--accent2);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
 
-.logo-text small{
-font-size:.62rem;
-color:#6b8fa8;
-}
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
 
-nav{
-display:flex;
-gap:2rem;
-}
+    .hero h1 span { color: var(--accent2); }
 
-nav a{
-color:#c8daea;
-text-decoration:none;
-font-size:.9rem;
-}
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 36px;
+      max-width: 440px;
+    }
 
-nav a.active{
-color:white;
-border-bottom:2px solid #1a7fff;
-padding-bottom:3px;
-}
+    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
 
-.btn-login{
-background:#1a7fff;
-border:none;
-color:white;
-padding:.55rem 1.3rem;
-border-radius:50px;
-font-weight:600;
-cursor:pointer;
-}
+    /* Phone mockup */
+    .hero-visual {
+      flex-shrink: 0;
+      position: relative;
+    }
 
-/* HERO */
+    .phone-frame {
+      width: 260px;
+      background: #1a2235;
+      border-radius: 36px;
+      border: 2px solid rgba(255,255,255,0.1);
+      padding: 16px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+    }
 
-.hero{
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:5rem 0;
-gap:3rem;
-}
+    .phone-screen {
+      background: var(--dark2);
+      border-radius: 24px;
+      overflow: hidden;
+    }
 
-.hero-left{
-max-width:500px;
-}
+    .phone-header {
+      background: var(--accent);
+      padding: 14px 16px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-.hero-left h2{
-font-size:3rem;
-font-weight:800;
-line-height:1.1;
-margin-bottom:1rem;
-}
+    .phone-header .dot {
+      width: 8px; height: 8px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+    }
 
-.subtitle{
-color:#8aaec8;
-margin-bottom:2rem;
-}
+    .phone-header span {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #fff;
+      margin-left: 4px;
+    }
 
-.hero-buttons{
-display:flex;
-gap:1rem;
-}
+    .phone-title {
+      padding: 12px 16px 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
 
-.btn-primary{
-background:#1a7fff;
-border:none;
-color:white;
-padding:.75rem 1.6rem;
-border-radius:50px;
-font-weight:600;
-cursor:pointer;
-}
+    .defect-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 0.78rem;
+    }
 
-.btn-outline{
-background:transparent;
-border:2px solid rgba(255,255,255,0.65);
-color:white;
-padding:.7rem 1.6rem;
-border-radius:50px;
-font-weight:600;
-cursor:pointer;
-}
+    .defect-item .label { color: var(--text); font-weight: 500; }
+    .defect-item .sub { color: var(--muted); font-size: 0.7rem; }
 
-/* CITY */
+    .check { color: var(--green); font-size: 1rem; }
+    .flag { color: var(--red); font-size: 0.85rem; }
 
-.hero-right{
-display:flex;
-justify-content:center;
-align-items:center;
-}
+    /* ── STATS STRIP ── */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      padding: 40px 6%;
+      background: var(--card);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      flex-wrap: wrap;
+    }
 
-.city-wrap{
-width:400px;
-height:400px;
-}
+    .stat { text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent2); }
+    .stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 4px; }
 
-/* CONNECT BANNER */
+    /* ── PROBLEMS ── */
+    .problems {
+      padding: 80px 6%;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
 
-.connect-banner{
-text-align:center;
-font-weight:600;
-color:#ddeeff;
-padding:2rem 1rem;
-}
+    .problems-text { flex: 1; min-width: 280px; }
+    .section-tag {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 12px;
+    }
 
-/* TOOL CARDS */
+    .problems-text h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
 
-.tools-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:1.2rem;
-padding-bottom:4rem;
-}
+    .problems-text p { color: var(--muted); margin-bottom: 28px; }
 
-.tool-card{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
-border-radius:20px;
-padding:1.6rem 1.3rem;
-display:flex;
-flex-direction:column;
-gap:.7rem;
-transition:.25s;
-}
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      flex: 1;
+      min-width: 280px;
+    }
 
-.tool-card:hover{
-transform:translateY(-4px);
-box-shadow:0 12px 30px rgba(0,100,255,0.15);
-}
+    .problem-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
 
-.tool-icon{
-width:40px;
-height:40px;
-background:rgba(26,127,255,0.15);
-border-radius:10px;
-display:flex;
-align-items:center;
-justify-content:center;
-}
+    .problem-card .icon { font-size: 1.4rem; margin-bottom: 10px; }
+    .problem-card h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; }
+    .problem-card p { font-size: 0.8rem; color: var(--muted); }
 
-.tool-card h3{
-font-size:1rem;
-font-weight:700;
-}
+    .problem-card.solved { border-color: rgba(34,197,94,0.2); }
+    .problem-card.solved .icon-wrap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      background: rgba(34,197,94,0.12);
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
 
-.tool-card p{
-font-size:.85rem;
-color:#7a9ab8;
-line-height:1.5;
-flex:1;
-}
+    .problem-card.unsolved { border-color: rgba(239,68,68,0.2); }
+    .problem-card.unsolved .icon-wrap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      background: rgba(239,68,68,0.12);
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
 
-.card-btn{
-background:#1a7fff;
-border:none;
-color:white;
-padding:.45rem 1.1rem;
-border-radius:50px;
-font-size:.82rem;
-font-weight:600;
-cursor:pointer;
-width:fit-content;
-}
+    /* ── HOW IT WORKS ── */
+    .how {
+      padding: 80px 6%;
+      background: radial-gradient(ellipse at 60% 0%, rgba(59,130,246,0.1) 0%, transparent 60%);
+    }
 
-.card-btn:hover{
-background:#0f6de0;
-}
+    .how-header { text-align: center; margin-bottom: 60px; }
+    .how-header h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-top: 8px; }
+    .how-header p { color: var(--muted); margin-top: 10px; max-width: 500px; margin-inline: auto; }
 
-footer{
-text-align:center;
-padding:1.5rem 0;
-font-size:.8rem;
-color:#3a5568;
-border-top:1px solid rgba(255,255,255,0.06);
-}
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      position: relative;
+    }
 
-/* RESPONSIVE */
+    .step-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      text-align: center;
+      transition: transform 0.2s, border-color 0.2s;
+    }
 
-@media(max-width:1024px){
-.tools-grid{grid-template-columns:repeat(2,1fr);}
-}
+    .step-card:hover { transform: translateY(-4px); border-color: rgba(59,130,246,0.4); }
 
-@media(max-width:768px){
+    .step-num {
+      width: 42px; height: 42px;
+      background: rgba(59,130,246,0.15);
+      border: 1px solid rgba(59,130,246,0.3);
+      color: var(--accent2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      margin: 0 auto 16px;
+    }
 
-.page-wrapper{padding:0 1.5rem;}
+    .step-icon { font-size: 2rem; margin-bottom: 14px; }
+    .step-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .step-card p { font-size: 0.82rem; color: var(--muted); }
 
-.hero{
-flex-direction:column;
-text-align:center;
-}
+    /* ── FEATURES ── */
+    .features {
+      padding: 80px 6%;
+    }
 
-.hero-left h2{
-font-size:2.2rem;
-}
+    .features-header { text-align: center; margin-bottom: 56px; }
+    .features-header h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-top: 8px; }
+    .features-header p { color: var(--muted); margin-top: 10px; max-width: 480px; margin-inline: auto; }
 
-.hero-buttons{
-justify-content:center;
-}
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
 
-nav{display:none;}
+    .feature-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
 
-}
+    .feature-card:hover { transform: translateY(-4px); border-color: rgba(59,130,246,0.35); }
 
-@media(max-width:520px){
-.tools-grid{grid-template-columns:1fr;}
-}
+    .feature-icon {
+      width: 48px; height: 48px;
+      background: rgba(59,130,246,0.12);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+    }
 
-</style>
+    .feature-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── REPORT PREVIEW ── */
+    .report-section {
+      padding: 80px 6%;
+      background: var(--card);
+      display: flex;
+      gap: 60px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .report-text { flex: 1; min-width: 280px; }
+    .report-text h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin: 8px 0 16px; }
+    .report-text p { color: var(--muted); margin-bottom: 28px; }
+
+    .report-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .report-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.9rem;
+    }
+    .report-list li .bullet {
+      width: 20px; height: 20px;
+      background: rgba(59,130,246,0.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem;
+      color: var(--accent2);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .report-mockup {
+      flex: 1; min-width: 280px;
+      background: #0f1628;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    }
+
+    .report-header {
+      background: var(--accent);
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .report-header span { font-size: 0.85rem; font-weight: 700; }
+    .report-header .logo-sm { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 700; }
+
+    .report-body { padding: 20px; }
+    .report-body h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 14px; }
+
+    .report-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .report-photo {
+      height: 70px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #1e3a5f, #2d4a7a);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .report-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.78rem;
+    }
+
+    .report-row .label { color: var(--muted); }
+    .report-row .val { font-weight: 600; }
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+    .tag-red { background: rgba(239,68,68,0.15); color: #f87171; }
+    .tag-yellow { background: rgba(234,179,8,0.15); color: #fbbf24; }
+    .tag-green { background: rgba(34,197,94,0.15); color: #4ade80; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { padding: 80px 6%; }
+    .testimonials-header { text-align: center; margin-bottom: 48px; }
+    .testimonials-header h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-top: 8px; }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .testi-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+
+    .stars { color: #fbbf24; font-size: 0.9rem; margin-bottom: 14px; }
+    .testi-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .testi-author .name { font-size: 0.88rem; font-weight: 700; }
+    .testi-author .role { font-size: 0.78rem; color: var(--muted); }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 90px 6%;
+      text-align: center;
+      background: radial-gradient(ellipse at 50% 100%, rgba(59,130,246,0.2) 0%, transparent 65%);
+    }
+
+    .cta-section h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 16px; }
+    .cta-section p { color: var(--muted); font-size: 1.05rem; max-width: 480px; margin: 0 auto 36px; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    .btn-large {
+      padding: 14px 32px;
+      font-size: 1rem;
+      border-radius: 10px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 48px 6% 28px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand p { color: var(--muted); font-size: 0.85rem; max-width: 260px; margin-top: 10px; }
+
+    .footer-links h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 14px; }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-links ul li a { font-size: 0.83rem; color: var(--muted); transition: color 0.2s; }
+    .footer-links ul li a:hover { color: var(--text); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero { flex-direction: column; padding: 60px 5% 50px; text-align: center; }
+      .hero-cta { justify-content: center; }
+      .hero p { margin-inline: auto; }
+      .nav-links { display: none; }
+      .problems { flex-direction: column; }
+      .report-section { flex-direction: column; }
+      .stats { gap: 30px; }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="page-wrapper">
-
-<header>
-
-<div class="logo">
-<div class="logo-icon">S</div>
-
-<div class="logo-text">
-<strong>Structra</strong>
-<small>A platform by Structra Technologies</small>
-</div>
-</div>
-
+<!-- NAV -->
 <nav>
-<a href="#" class="active">Platform</a>
-<a href="#">Products</a>
-<a href="#">About</a>
+  <div class="logo">
+    <div class="logo-icon">🏠</div>
+    Structra Tech
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Features</a></li>
+    <li><a href="#">How It Works</a></li>
+    <li><a href="#">Pricing</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <button class="btn-primary">Join Early Access</button>
 </nav>
 
-<button class="btn-login">Log In</button>
-
-</header>
-
+<!-- HERO -->
 <section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">✦ Now in Early Access</div>
+    <h1>Professional inspections—<span>without the paperwork.</span></h1>
+    <p>Capture defects, generate polished reports, and turn inspections into actionable scopes — all from your phone with Structra Tech.</p>
+    <div class="hero-cta">
+      <button class="btn-primary">Join Early Access</button>
+      <button class="btn-outline">See How It Works</button>
+    </div>
+  </div>
 
-<div class="hero-left">
-
-<h2>Smarter Property Inspections Start Here</h2>
-
-<p class="subtitle">
-AI-powered tools for property inspections and smarter building decisions
-</p>
-
-<div class="hero-buttons">
-<button class="btn-primary">Start Inspection</button>
-<button class="btn-outline">For Inspectors</button>
-</div>
-
-</div>
-
-<div class="hero-right">
-
-<div class="city-wrap">
-
-<svg viewBox="0 0 400 380" xmlns="http://www.w3.org/2000/svg" width="400" height="380">
-
-<rect x="178" y="70" width="44" height="230" fill="#1a7fff"/>
-<polygon points="200,28 193,70 207,70" fill="#5ad8ff"/>
-
-</svg>
-
-</div>
-
-</div>
-
+  <div class="hero-visual">
+    <div class="phone-frame">
+      <div class="phone-screen">
+        <div class="phone-header">
+          <div class="dot"></div><div class="dot"></div>
+          <span>Structra Inspections</span>
+        </div>
+        <div class="phone-title">A3 Bedroom</div>
+        <div class="defect-item">
+          <div>
+            <div class="label">Water Stain on Ceiling</div>
+            <div class="sub">Needs immediate repair</div>
+          </div>
+          <span class="flag">⚠</span>
+        </div>
+        <div class="defect-item">
+          <div>
+            <div class="label">Loose Door Handle</div>
+            <div class="sub">Minor adjustment needed</div>
+          </div>
+          <span class="flag">⚠</span>
+        </div>
+        <div class="defect-item">
+          <div>
+            <div class="label">Cover Plate Outlet</div>
+            <div class="sub">Replaced successfully</div>
+          </div>
+          <span class="check">✓</span>
+        </div>
+        <div class="defect-item">
+          <div>
+            <div class="label">AC Rooftop Unit</div>
+            <div class="sub">Serviced and checked</div>
+          </div>
+          <span class="check">✓</span>
+        </div>
+        <div class="defect-item">
+          <div>
+            <div class="label">Broken Power Outlet</div>
+            <div class="sub">Pending electrician</div>
+          </div>
+          <span class="flag">⚠</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<div class="connect-banner">
-Connecting property buyers, inspectors, builders, and contractors in one AI-powered platform
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">3×</div>
+    <div class="stat-label">Faster reporting</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">98%</div>
+    <div class="stat-label">Defect capture rate</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">500+</div>
+    <div class="stat-label">Active inspectors</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">0</div>
+    <div class="stat-label">Paperwork required</div>
+  </div>
 </div>
 
-<section class="tools-grid">
+<!-- PROBLEMS -->
+<section class="problems">
+  <div class="problems-text">
+    <div class="section-tag">The Problem</div>
+    <h2>Inspections shouldn't take longer than the site visit.</h2>
+    <p>Traditional workflows slow you down with messy photos, forgotten defects, and hours of manual report writing. Structra Tech changes all of that.</p>
+    <button class="btn-primary">Fix My Workflow</button>
+  </div>
 
-<div class="tool-card">
-
-<div class="tool-icon">🏠</div>
-
-<h3>Structra Buyer</h3>
-
-<p>
-Run guided inspections at open homes and generate a property report in minutes.
-</p>
-
-<button class="card-btn">Launch Tool</button>
-
-</div>
-
-<div class="tool-card">
-
-<div class="tool-icon">🔍</div>
-
-<h3>Structra Pro</h3>
-
-<p>
-Professional inspection software with AI-assisted reporting and repair cost estimates.
-</p>
-
-<button class="card-btn">Launch Tool</button>
-
-</div>
-
-<div class="tool-card">
-
-<div class="tool-icon">📊</div>
-
-<h3>Structra Estimate</h3>
-
-<p>
-Automated build cost estimation powered by real market data and AI insights.
-</p>
-
-<button class="card-btn" disabled>Coming Soon</button>
-
-</div>
-
-<div class="tool-card">
-
-<div class="tool-icon">📁</div>
-
-<h3>Projects</h3>
-
-<p>
-Manage builds end-to-end. Track progress, teams, costs, and timelines.
-</p>
-
-<button class="card-btn">View Projects</button>
-
-</div>
-
+  <div class="problem-grid">
+    <div class="problem-card unsolved">
+      <div class="icon-wrap">📸</div>
+      <h4>Messy Photos</h4>
+      <p>Hundreds of unlabeled images with no context or location tags.</p>
+    </div>
+    <div class="problem-card unsolved">
+      <div class="icon-wrap">🔍</div>
+      <h4>Forgotten Defects</h4>
+      <p>Critical issues slip through the cracks on busy inspection days.</p>
+    </div>
+    <div class="problem-card solved">
+      <div class="icon-wrap">⚡</div>
+      <h4>Instant Capture</h4>
+      <p>Tag, annotate, and categorize defects in real time on-site.</p>
+    </div>
+    <div class="problem-card solved">
+      <div class="icon-wrap">📄</div>
+      <h4>Auto Reports</h4>
+      <p>Polished, client-ready reports generated before you leave the property.</p>
+    </div>
+  </div>
 </section>
 
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="how-header">
+    <div class="section-tag">How It Works</div>
+    <h2>From site visit to signed report in minutes.</h2>
+    <p>A simple four-step workflow that eliminates hours of post-inspection desk work.</p>
+  </div>
+  <div class="steps">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-icon">📍</div>
+      <h3>Capture On-Site</h3>
+      <p>Photograph and log every defect as you walk through the property.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-icon">🔄</div>
+      <h3>Structra Syncs</h3>
+      <p>Data is automatically organized, tagged, and securely stored in the cloud.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-icon">📊</div>
+      <h3>Generate Report</h3>
+      <p>One tap creates a fully formatted, branded professional report instantly.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <div class="step-icon">✉️</div>
+      <h3>Send & Share</h3>
+      <p>Deliver to clients via email or link — no extra formatting required.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="features-header">
+    <div class="section-tag">Features</div>
+    <h2>Everything you need. Nothing you don't.</h2>
+    <p>Built specifically for property inspectors who need speed, accuracy, and professionalism.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📸</div>
+      <h3>Smart Photo Capture</h3>
+      <p>Auto-tag images with location, room, and defect type. Never lose context again.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🗺️</div>
+      <h3>Floor Plan Mapping</h3>
+      <p>Pin defects directly onto property floor plans for crystal-clear client communication.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📄</div>
+      <h3>Branded Reports</h3>
+      <p>Generate polished PDF reports with your logo, colors, and custom templates.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Offline Mode</h3>
+      <p>Capture everything on-site even without a signal — data syncs when you reconnect.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔗</div>
+      <h3>Contractor Scopes</h3>
+      <p>Turn inspection findings directly into repair scopes and send them to contractors.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📈</div>
+      <h3>Analytics Dashboard</h3>
+      <p>Track defect trends, inspection history, and team performance over time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REPORT PREVIEW -->
+<section class="report-section">
+  <div class="report-text">
+    <div class="section-tag">Reports</div>
+    <h2>See your inspections — polished, client-ready.</h2>
+    <p>Structra Tech transforms raw site data into insight-rich, professional reports your clients will actually read.</p>
+    <ul class="report-list">
+      <li>
+        <span class="bullet">✓</span>
+        <span>Annotated photos automatically embedded in context</span>
+      </li>
+      <li>
+        <span class="bullet">✓</span>
+        <span>Severity ratings and recommended actions included</span>
+      </li>
+      <li>
+        <span class="bullet">✓</span>
+        <span>Custom branding — your logo and color scheme</span>
+      </li>
+      <li>
+        <span class="bullet">✓</span>
+        <span>Shareable link or downloadable PDF in one tap</span>
+      </li>
+    </ul>
+    <button class="btn-primary">See Sample Report</button>
+  </div>
+
+  <div class="report-mockup">
+    <div class="report-header">
+      <div class="logo-sm">🏠 Structra Tech</div>
+      <span>Inspection Summary</span>
+    </div>
+    <div class="report-body">
+      <h4>123 Maple Street — Full Inspection</h4>
+      <div class="report-photos">
+        <div class="report-photo">🪟</div>
+        <div class="report-photo">🚿</div>
+        <div class="report-photo">🔌</div>
+        <div class="report-photo">🏠</div>
+      </div>
+      <div class="report-row">
+        <span class="label">Total Defects Found</span>
+        <span class="val">14</span>
+      </div>
+      <div class="report-row">
+        <span class="label">Critical Issues</span>
+        <span class="val"><span class="tag tag-red">3 Critical</span></span>
+      </div>
+      <div class="report-row">
+        <span class="label">Moderate Issues</span>
+        <span class="val"><span class="tag tag-yellow">7 Moderate</span></span>
+      </div>
+      <div class="report-row">
+        <span class="label">Minor Issues</span>
+        <span class="val"><span class="tag tag-green">4 Minor</span></span>
+      </div>
+      <div class="report-row">
+        <span class="label">Report Generated</span>
+        <span class="val">On-site, instantly</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-header">
+    <div class="section-tag">Testimonials</div>
+    <h2>Trusted by inspectors everywhere.</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"I used to spend 3 hours writing up reports after every visit. With Structra Tech I'm done before I leave the driveway. Game changer."</p>
+      <div class="testi-author">
+        <div class="avatar" style="background:#1d4ed8;">JM</div>
+        <div>
+          <div class="name">James Mitchell</div>
+          <div class="role">Senior Property Inspector</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"My clients are blown away by how professional the reports look. And I didn't have to do anything extra — it just works."</p>
+      <div class="testi-author">
+        <div class="avatar" style="background:#0f766e;">SR</div>
+        <div>
+          <div class="name">Sarah Reynolds</div>
+          <div class="role">Residential Inspector, TX</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>"Structra Tech paid for itself on the first job. We caught defects we would've missed and sent the scope to our contractor the same day."</p>
+      <div class="testi-author">
+        <div class="avatar" style="background:#7c3aed;">DK</div>
+        <div>
+          <div class="name">Derek Kim</div>
+          <div class="role">Commercial Property Manager</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-tag">Get Started</div>
+  <h2>Ready to transform your inspections?</h2>
+  <p>Join hundreds of inspectors already saving hours every week with Structra Tech.</p>
+  <div class="cta-btns">
+    <button class="btn-primary btn-large">Join Early Access — It's Free</button>
+    <button class="btn-outline btn-large">Book a Demo</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-© 2024 Structra Technologies. All rights reserved.
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo">
+        <div class="logo-icon">🏠</div>
+        Structra Tech
+      </div>
+      <p>Professional property inspection software built for speed, accuracy, and polish.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">How It Works</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Changelog</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Structra Tech. All rights reserved.</span>
+    <span>Made for inspectors, by inspectors.</span>
+  </div>
 </footer>
-
-</div>
 
 </body>
 </html>
